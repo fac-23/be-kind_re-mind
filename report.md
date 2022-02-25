@@ -1,10 +1,18 @@
 # Introduction 
 What are you building?
+
+An app to remind users to take their medication, that encourages users to meet their medication goals and take their medication consistently
+
 Why are you building it?
+To have a positive impact on people's health, automate their current solution and prevent them missing medication from a changed routine
+
 
 ## Project scope 
 What are you not building?
+Not building a full health with other things such as appointments, therapy, surgergy etc.
+
 How did you decide what features were important?
+We focused just on what was needed to remind the users about their medications
 
 ## Project plan 
 How are you going to structure your sprints?
