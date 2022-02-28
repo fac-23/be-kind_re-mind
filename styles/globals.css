@@ -11,6 +11,12 @@ a {
   text-decoration: none;
 }
 
+.box {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+}
+
 * {
   box-sizing: border-box;
 }

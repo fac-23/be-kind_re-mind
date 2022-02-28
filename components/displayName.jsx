@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function DisplayName({ name }) {
-  return <div>Welcome {name} 😄</div>;
+  return <div className="box">Welcome {name} 😄</div>;
 }
