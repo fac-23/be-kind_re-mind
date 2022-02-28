@@ -16,7 +16,7 @@ export default function Layout({ home, children }) {
             <Link href="/">
               <a>Calendar</a>
             </Link>
-            <Link href="/">
+            <Link href="/medication">
               <a>Medication</a>
             </Link>
           </div>
