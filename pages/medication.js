@@ -1,5 +1,5 @@
 import MedicineBox from "../components/medicineBox.jsx";
-import Layout from "../components/layout.js";
+import Layout from "../components/layout";
 import MedicationForm from "../components/medicationForm.jsx";
 
 export default function MedicationPage() {
