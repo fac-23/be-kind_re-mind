@@ -12,17 +12,15 @@ export default function Home() {
   return (
     <div>
       <Layout home>
-      <main>
         <DisplayName name={"Oli"}></DisplayName>
         <CurrentStreak currentStreak={7}></CurrentStreak>
         <AlertBox></AlertBox>
         <MedicationChecklist></MedicationChecklist>
-        <RewardBox></RewardBox>
         <MedicineBox
           medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
         ></MedicineBox>
-      </main>
- </Layout>
+        <RewardBox></RewardBox>
+      </Layout>
     </div>
   );
 }

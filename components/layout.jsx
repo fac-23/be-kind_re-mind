@@ -2,7 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function Layout({ home, children }) {
-  console.log(home);
   return (
     <div>
       <Head>
