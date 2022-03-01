@@ -10,6 +10,8 @@
     "test": "cypress open"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.0",
     "next": "12.1.0",
     "pg": "^8.7.3",
