@@ -7,6 +7,8 @@ CREATE TABLE sessions (
   data TEXT
 );
 
+
+
 INSERT INTO sessions (sid, data) VALUES
 ('12323245556', 'data' );
 
