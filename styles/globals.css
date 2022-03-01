@@ -17,6 +17,12 @@ a {
   border: 1px solid black;
 }
 
+.flexbox-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
 * {
   box-sizing: border-box;
 }

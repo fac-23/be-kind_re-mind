@@ -17,8 +17,6 @@ CREATE TABLE sessions (
 );
 
 
-
-
 INSERT INTO sessions (sid, data) VALUES
 ('12323245556', 'data' ),
 ('98876352628', 'more-data' );
