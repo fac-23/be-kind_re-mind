@@ -1,6 +1,5 @@
 import { cookie_options, saveSession } from "../../auth";
 import { createUser } from "../../database/model";
-import crypto from "node:crypto";
 import bcrypt from "bcrypt";
 
 function hashPassword(password) {
