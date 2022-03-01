@@ -9,7 +9,6 @@ export default function MedicationPage() {
         <MedicineBox
           medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
         ></MedicineBox>
-        <button type="submit">Add Medicine</button>
         <MedicationForm></MedicationForm>
       </Layout>
     </div>
