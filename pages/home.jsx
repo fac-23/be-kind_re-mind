@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <div>
       <Layout home>
+        <h1>Home</h1>
         <DisplayName name={"Oli"}></DisplayName>
         <CurrentStreak currentStreak={7}></CurrentStreak>
         <AlertBox></AlertBox>

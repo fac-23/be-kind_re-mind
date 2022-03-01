@@ -1,9 +1,12 @@
 import React from "react";
+import Layout from "../components/layout";
 
 export default function Rewards() {
   return (
-    <div>
-      <h1>Rewards 🌼</h1>
-    </div>
+    <Layout>
+      <div>
+        <h1>Rewards 🌼</h1>
+      </div>
+    </Layout>
   );
 }

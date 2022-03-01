@@ -1,7 +1,7 @@
 export default function MedicationForm() {
   return (
     <form>
-      <div>
+      <div className="box">
         <input
           type="radio"
           id="tablets"
@@ -27,23 +27,23 @@ export default function MedicationForm() {
       <input type="number" name="med-dose" required />
 
       <p>Select your schedule</p>
-      <div>
+      <div className="box">
         <input type="checkbox" id="med-time" value="08:00" name="med-time" />
         <label htmlFor="med-time">08:00</label>
       </div>
-      <div>
+      <div className="box">
         <input type="checkbox" id="med-time" value="11:00" name="med-time" />
         <label htmlFor="med-time">11:00</label>
       </div>
-      <div>
+      <div className="box">
         <input type="checkbox" id="med-time" value="13:00" name="med-time" />
         <label htmlFor="med-time">13:00</label>
       </div>
-      <div>
+      <div className="box">
         <input type="checkbox" id="med-time" value="18:00" name="med-time" />
         <label htmlFor="med-time">18:00</label>
       </div>
-      <div>
+      <div className="box">
         <input type="checkbox" id="med-time" value="22:00" name="med-time" />
         <label htmlFor="med-time">22:00</label>
       </div>

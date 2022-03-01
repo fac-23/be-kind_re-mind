@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Layout({ home, children }) {
   return (
@@ -7,12 +8,13 @@ export default function Layout({ home, children }) {
       <Head>
         <title>Be-Kind Re-Mind</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
       <header>
         {home ? (
           <div>
             <h1>Be-Kind Re-Mind</h1>
-            <Link href="/">
+            <Link href="/history">
               <a>Calendar</a>
             </Link>
             <Link href="/medication">
@@ -22,10 +24,10 @@ export default function Layout({ home, children }) {
         ) : (
           <div>
             <h1>Be-Kind Re-Mind</h1>
-            <Link href="/">
+            <Link href="/history">
               <a>Calendar</a>
             </Link>
-            <Link href="/">
+            <Link href="/home">
               <a>Home</a>
             </Link>
           </div>
