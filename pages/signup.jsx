@@ -5,7 +5,7 @@ export default function Signup() {
     <div>
       <h1>Sign up</h1>
       <form action="/api/sign-up" method="POST">
-        <label htmlFor="username">Name</label>
+        <label htmlFor="username">Username</label>
         <input type="text" id="username" name="username" />
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" />

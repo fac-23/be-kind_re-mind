@@ -17,3 +17,10 @@ export function createSession(sid, data) {
     return result.rows[0].sid;
   });
 }
+
+export function getUser(email) {
+  const GET_USER = `SELECT * FROM users WHERE email = $1`;
+  return db.query(GET_USER, [email]).then((result) => {
+    return result.rows[0];
+  });
+}

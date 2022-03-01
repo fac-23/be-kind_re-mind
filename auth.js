@@ -1,4 +1,4 @@
-import { createSession } from "./database/model";
+import { createSession, getUser } from "./database/model";
 import crypto from "node:crypto";
 
 export const cookie_options = {
@@ -15,3 +15,17 @@ export async function saveSession(data) {
   //run create session in model.js, which inserts session into db (data and sid)
   return createSession(sid, data);
 }
+
+//called in log-in
+export async function verifyUser(email, password) {
+  const savedUser = await getUser(email);
+  return savedUser;
+}
+
+// savedUser in verifyUser auth {
+//   id: 2,
+//   username: 'olij',
+//   email: 'oli@oli.com',
+//   phone: '076664535',
+//   password: '123'
+// }
