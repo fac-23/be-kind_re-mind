@@ -20,7 +20,14 @@ CREATE TABLE medications (
   medId SERIAL PRIMARY KEY,
   userId INTEGER,
   FOREIGN KEY(userId) REFERENCES users(id),
-  medicationInfo JSON
+  medicationType TEXT,
+  medName TEXT,
+  medDose TEXT,
+  units TEXT,
+  tabCount INTEGER,
+  medTime TEXT,
+  customTime TEXT,
+  notes TEXT
 );
 
 
@@ -33,17 +40,7 @@ INSERT INTO users (username, email, phone, password) VALUES
   ('juliettep', 'juliette@juliette.com', '074554535', '123'),
   ('olij', 'oli@oli.com', '076664535','123');
 
-INSERT INTO medications (userId, medicationInfo) VALUES (
-  1,
-  '{
-  "medicationType":"tablets",
-  "medName":"Aspirin",
-  "medDose":"200",
-  "units":"mg",
-  "tabCount":"28",
-  "medTime":"13:00",
-  "customTime":"",
-  "notes":"with water"
-  }');
+INSERT INTO medications (userId, medicationType, medName, medDose, units, tabCount, medTime, customTime, notes) VALUES (
+  1,'tablets','Aspirin',200,'mg',28,'13:00','no','with water');
 
 COMMIT;

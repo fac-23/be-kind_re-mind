@@ -11,6 +11,9 @@ export default function handler(req, res) {
   } = req.body;
 
   console.log(req.body);
+
+  addToMedicationlist();
+
   res.status(200).json({
     medicationType,
     medName,
