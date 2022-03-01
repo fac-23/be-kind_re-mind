@@ -30,6 +30,9 @@ export default function MedicationForm() {
         <option value="g">grams - g</option>
       </select>
 
+      <label htmlFor="tabCount">Full box tablet count</label>
+      <input type="number" name="tabCount" />
+
       <p>Select your schedule</p>
       <div className="box">
         <input type="checkbox" id="medTime" value="08:00" name="medTime" />

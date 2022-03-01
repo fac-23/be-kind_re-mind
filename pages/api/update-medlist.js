@@ -5,6 +5,7 @@ export default function handler(req, res) {
     units,
     medDose,
     medTime,
+    tabCount,
     customTime,
     notes,
   } = req.body;
@@ -15,6 +16,7 @@ export default function handler(req, res) {
     medName,
     medDose,
     units,
+    tabCount,
     medTime,
     customTime,
     notes,
