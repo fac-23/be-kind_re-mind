@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flexbox-center-col">
+       <div className="flexbox-center-col">
       <Image
         src="/logo.svg"
         alt="bekind remind logo"
@@ -11,7 +11,9 @@ export default function Home() {
         height="200px"
       ></Image>
       <Link href="/home">
-        <a>Sign in</a>
+      <Link href="/login">
+        <a>Log in</a>
+
       </Link>
       <Link href="/signup">
         <a>Sign up</a>
