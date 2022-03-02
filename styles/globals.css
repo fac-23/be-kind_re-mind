@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+p a {
+  color: blue;
+}
+
 .box {
   margin: 1rem;
   padding: 1rem;

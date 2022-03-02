@@ -1,5 +1,5 @@
 import { verifyUser, saveSession, cookie_options } from "../../auth";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export default async function log_in(req, res) {
   switch (req.method) {
