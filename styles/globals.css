@@ -26,3 +26,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.med {
+  border: 2px black solid;
+  padding: 10px;
+  list-style: none;
+  margin: 10px;
+}
