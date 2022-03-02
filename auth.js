@@ -1,5 +1,5 @@
 import { createSession, getUser } from "./database/model";
-import crypto from "node:crypto";
+const crypto = require("crypto");
 
 export const cookie_options = {
   httpOnly: true,
