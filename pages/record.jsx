@@ -2,7 +2,7 @@ import React from "react";
 import CurrentStreak from "../components/currentStreak";
 import Layout from "../components/layout";
 
-export default function Calendar() {
+export default function Record() {
   return (
     <Layout>
       <div>
