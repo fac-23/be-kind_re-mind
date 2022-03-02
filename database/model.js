@@ -1,4 +1,5 @@
 import db from "../database/connection";
+import bcrypt from "bcrypt";
 
 export function createUser(username, email, phone, hashedPassword) {
   const INSERT_USER = `INSERT INTO users (username, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING id, username, email, phone`;
@@ -18,9 +19,13 @@ export function createSession(sid, data) {
   });
 }
 
-export function getUser(email) {
+export function getUser(email, hashedPassword) {
+  console.log("getUser args", email, hashedPassword);
   const GET_USER = `SELECT * FROM users WHERE email = $1`;
   return db.query(GET_USER, [email]).then((result) => {
-    return result.rows[0];
+    console.log("get user query", result.rows);
+    return result.rows;
   });
 }
+
+//SELECT * FROM users WHERE email='oli@oli.com' AND password='123';
