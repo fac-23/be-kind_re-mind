@@ -1,4 +1,5 @@
 import { verifyUser, saveSession, cookie_options } from "../../auth";
+import bcrypt from "bcrypt";
 
 export default async function log_in(req, res) {
   switch (req.method) {
@@ -6,10 +7,11 @@ export default async function log_in(req, res) {
       const { email, password } = req.body;
       //calls verifyUser in auth - which sends a query to db to return user with the same email
       const user = await verifyUser(email, password);
-      console.log("verified, login", user);
+      console.log("verified user in log in", user);
+      // in auth save session creates SID and calls createSession in model
+      const sid = await saveSession({ user_id: user[0].id });
 
-      const sid = await saveSession({ user_id: user.id });
-
+      console.log(sid);
       res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
       res.redirect(303, "/home");
       break;
