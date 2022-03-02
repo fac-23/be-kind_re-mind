@@ -16,7 +16,7 @@ CREATE TABLE sessions (
   data TEXT
 );
 
-CREATE TABLE medications (
+CREATE TABLE (
   medId SERIAL PRIMARY KEY,
   userId INTEGER,
   FOREIGN KEY(userId) REFERENCES users(id),

@@ -24,3 +24,60 @@ export function getUser(email) {
     return result.rows[0];
   });
 }
+
+export function addToMedicationlist(
+  medicationType,
+  medName,
+  units,
+  medDose,
+  medTime,
+  tabCount,
+  customTime,
+  notes
+) {
+  const ADD_MED = `INSERT INTO medications (medicationType,
+    medName,
+    units,
+    medDose,
+    medTime,
+    tabCount,
+    customTime,
+    notes) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING medicationType,
+    medName,
+    units,
+    medDose,
+    medTime,
+    tabCount,
+    customTime,
+    notes`;
+  return db
+    .query(ADD_MED, [
+      medicationType,
+      medName,
+      units,
+      medDose,
+      medTime,
+      tabCount,
+      customTime,
+      notes,
+    ])
+    .then((result) => {
+      // console.log("added", result.rows[0]);
+      return result.rows[0];
+    });
+}
+
+export function getAllMeds() {
+  const GET_ALL_MEDS = `SELECT * FROM medications`;
+  return db.query(GET_ALL_MEDS).then((result) => {
+    // console.log("get all meds", result.rows);
+    return result.rows;
+  });
+}
+
+// export function deleteItem(id) {
+//   const DELETE_ITEM = `DELETE FROM medications WHERE medId=$1`;
+//   return db
+//     .query(DELETE_ITEM, [id])
+//     .then((result) => console.log("deleted from table"));
+// }
