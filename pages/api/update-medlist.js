@@ -1,4 +1,6 @@
-export default function handler(req, res) {
+import { addToMedicationlist } from "../../database/model";
+
+export default async function handler(req, res) {
   const {
     medicationType,
     medName,
@@ -12,16 +14,18 @@ export default function handler(req, res) {
 
   console.log(req.body);
 
-  addToMedicationlist();
-
-  res.status(200).json({
+  const addedMedications = await addToMedicationlist(
     medicationType,
     medName,
-    medDose,
     units,
-    tabCount,
+    medDose,
     medTime,
+    tabCount,
     customTime,
-    notes,
-  });
+    notes
+  );
+
+  console.log("added meds", addedMedications);
+
+  res.status(200).redirect("/medication");
 }
