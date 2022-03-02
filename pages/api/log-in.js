@@ -11,7 +11,7 @@ export default async function log_in(req, res) {
       const sid = await saveSession({ user_id: user.id });
 
       res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
-      res.redirect(301, "/home");
+      res.redirect(303, "/home");
       break;
     }
     default:
