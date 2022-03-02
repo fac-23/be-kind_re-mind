@@ -2,7 +2,7 @@ import { cookie_options, saveSession } from "../../auth";
 import { createUser } from "../../database/model";
 import bcrypt from "bcrypt";
 
-function hashPassword(password) {
+export function hashPassword(password) {
   return bcrypt.hash(password, 10);
 }
 
@@ -11,17 +11,17 @@ export default async function sign_up(req, res) {
   // request line 8 - 16 runs
   switch (req.method) {
     case "POST": {
-      //destructured obj from req.body takes form input which is then parsed into the createUser function which adds new user to DB
+      //destructured obj from req.body takes form input which is then
       const { username, email, phone, password } = req.body;
 
       // returns hashed password function above
       const hashedPassword = await hashPassword(password);
 
+      //user data is parsed into the createUser in Model.js function which adds new user to DB
       const user = await createUser(username, email, phone, hashedPassword);
 
-      //NOT YET REFACTORED
+      //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
-      console.log("sid in sign up", sid);
 
       res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
       res.redirect(303, "/home");

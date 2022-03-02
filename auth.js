@@ -1,9 +1,10 @@
 import { createSession, getUser } from "./database/model";
 const crypto = require("crypto");
+import bcrypt from "bcrypt";
 
 export const cookie_options = {
   httpOnly: true,
-  maxAge: 1000 * 60 * 60 * 24,
+  maxAge: 60000,
   sameSite: "strict",
   signed: true,
 };
@@ -18,7 +19,17 @@ export async function saveSession(data) {
 
 //called in log-in
 export async function verifyUser(email, password) {
+  //calls getUser in model
   const savedUser = await getUser(email);
+  console.log("savedUser", savedUser);
+  bcrypt.compare(password, savedUser[0].password).then((match) => {
+    if (!match) {
+      throw new Error("Password mismatch!");
+    } else {
+      delete savedUser[0].password;
+      return savedUser[0].password;
+    }
+  });
   return savedUser;
 }
 
