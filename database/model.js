@@ -1,5 +1,5 @@
 import db from "../database/connection";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export function createUser(username, email, phone, hashedPassword) {
   const INSERT_USER = `INSERT INTO users (username, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING id, username, email, phone`;
