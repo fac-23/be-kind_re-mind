@@ -6,22 +6,51 @@ export default function middleware(req) {
   const response = NextResponse.next();
 
   const sid = req.cookies.sid;
-  console.log(req.nextUrl.pathname);
+  const url = req.nextUrl.pathname;
 
-  if (
-    req.nextUrl.pathname !== "/logo.svg" ||
-    req.nextUrl.pathname !== "/sign-up" ||
-    req.nextUrl.pathname !== "/log-in" ||
-    req.nextUrl.pathname !== "/"
-  ) {
+  console.log(url);
+
+  if (req.nextUrl.pathname === "/") {
+    console.log("here");
     return response;
   }
 
-  if (!sid) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/";
-    return NextResponse.redirect(url);
-  } else {
-    return response;
+  //if no sid
+  //and path is not home, or login, or signup, or favicon
+  //redirect to home
+
+  if (!sid && url === "/home") {
+    console.log("no sid");
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
+
+  if (!sid && url === "/history") {
+    console.log("no sid");
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/notification") {
+    console.log("no sid");
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/medication") {
+    console.log("no sid");
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/rewards") {
+    console.log("no sid");
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  //otherwise send responsex
+
+  //   if (!sid) {
+  //     const url = req.nextUrl.clone();
+  //     url.pathname = "/";
+  //     return NextResponse.redirect(url);
+  //   } else {
+  //     return response;
+  //   }
 }
