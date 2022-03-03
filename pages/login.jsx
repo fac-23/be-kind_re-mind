@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export default function Login() {
   return (
@@ -11,6 +12,9 @@ export default function Login() {
         <input type="password" id="password" name="password" />
         <button>Log in</button>
       </form>
+      <Link href={"/"}>
+        <a>Back to landing page</a>
+      </Link>
     </div>
   );
 }

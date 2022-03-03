@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Signup() {
@@ -15,6 +16,9 @@ export default function Signup() {
         <input type="password" id="password" name="password" />
         <button>Sign up</button>
       </form>
+      <Link href={"/"}>
+        <a>Back to landing page</a>
+      </Link>
     </div>
   );
 }
