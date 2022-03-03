@@ -1,6 +1,7 @@
 import { cookie_options, saveSession } from "../../auth";
 import { createUser } from "../../database/model";
 import bcrypt from "bcryptjs";
+import Cookies from "cookies";
 
 export function hashPassword(password) {
   return bcrypt.hash(password, 10);
