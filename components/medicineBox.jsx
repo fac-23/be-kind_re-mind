@@ -6,7 +6,7 @@ export default function MedicineBox({ medicineObj, medicationInfo }) {
     <div className="box">
       <h2>Your medicines 💊</h2>
       <ul>
-        {medicationInfo.map((medication) => (
+        {medicationInfo && medicationInfo.map((medication) => (
           <li className="med" key={medication.id}>
             <p>{medication.medname}</p>
             <p>{medication.medicationtype}</p>

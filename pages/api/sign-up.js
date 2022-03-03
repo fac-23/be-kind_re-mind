@@ -1,6 +1,7 @@
 import { cookie_options, saveSession } from "../../auth";
 import { createUser } from "../../database/model";
 import bcrypt from "bcryptjs";
+import Cookies from "cookies";
 
 export function hashPassword(password) {
   return bcrypt.hash(password, 10);
@@ -23,7 +24,12 @@ export default async function sign_up(req, res) {
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
 
-      res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
+      const cookies = new Cookies(req, res);
+      cookies.set("sid", `${sid}`, {
+        httpOnly: true, // true by default
+        maxAge: cookie_options.maxAge,
+      });
+
       res.redirect(303, "/home");
       break;
     }

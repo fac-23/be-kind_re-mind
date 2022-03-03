@@ -1,5 +1,6 @@
 import { verifyUser, saveSession, cookie_options } from "../../auth";
 import bcrypt from "bcryptjs";
+import Cookies from "cookies";
 
 export default async function log_in(req, res) {
   switch (req.method) {
@@ -11,8 +12,12 @@ export default async function log_in(req, res) {
       // in auth save session creates SID and calls createSession in model
       const sid = await saveSession({ user_id: user[0].id });
 
-      console.log(sid);
-      res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
+      const cookies = new Cookies(req, res);
+      cookies.set("sid", `${sid}`, {
+        httpOnly: true, // true by default
+        maxAge: cookie_options.maxAge,
+      });
+
       res.redirect(303, "/home");
       break;
     }
@@ -21,11 +26,3 @@ export default async function log_in(req, res) {
       break;
   }
 }
-
-// verifiedUser {
-//   id: 2,
-//   username: 'olij',
-//   email: 'oli@oli.com',
-//   phone: '076664535',
-//   password: '123'
-// }

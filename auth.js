@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 export const cookie_options = {
   httpOnly: true,
-  maxAge: 60000,
+  maxAge: 60 * 60 * 1000 * 24,
   sameSite: "strict",
   signed: true,
 };
