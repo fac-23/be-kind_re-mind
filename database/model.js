@@ -10,7 +10,6 @@ export function createUser(username, email, phone, hashedPassword) {
     });
 }
 
-
 export function createSession(sid, data) {
   const CREATE_SESSION = `INSERT INTO sessions (sid, data) VALUES ($1, $2) RETURNING sid`;
   return db.query(CREATE_SESSION, [sid, data]).then((result) => {
@@ -77,6 +76,14 @@ export function getAllMeds() {
   });
 }
 
+//retrieves details of one medication from DB based on the PK of the med
+export function retrieveMedDetails(med_id) {
+  const RETRIEVE_MEDS = `SELECT * FROM medications WHERE id =$1`;
+  return db.query(RETRIEVE_MEDS, [med_id]).then((result) => {
+    // console.log("retrieve result", result.rows);
+    return result.rows[0];
+  });
+}
 
 export function deleteMed(id) {
   const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
@@ -90,7 +97,6 @@ export function deleteCurrSession(sid) {
   return db.query(DELETE_SESSION, [sid]);
 }
 
-
 export function getRecord(user_id) {
   const GET_RECORD = `
   SELECT * FROM record WHERE user_id = $1 AND taken = false
@@ -99,5 +105,3 @@ export function getRecord(user_id) {
     return result.rows;
   });
 }
-
-
