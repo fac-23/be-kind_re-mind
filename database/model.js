@@ -84,6 +84,15 @@ export function deleteCurrSession(sid) {
   return db.query(DELETE_SESSION, [sid]);
 }
 
+export function getRecord(user_id) {
+  const GET_RECORD = `
+  SELECT * FROM record WHERE user_id = $1 AND taken = false
+  `;
+  return db.query(GET_RECORD, [user_id]).then((result) => {
+    return result.rows;
+  });
+}
+
 // export function deleteItem(id) {
 //   const DELETE_ITEM = `DELETE FROM medications WHERE medId=$1`;
 //   return db
