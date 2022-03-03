@@ -5,11 +5,10 @@ export default function middleware(req) {
   // get the actual response for the page about to render
   const response = NextResponse.next();
 
-  let sid = req.cookies.sid;
+  const sid = req.cookies.sid;
   const url = req.nextUrl.pathname;
 
   console.log(url);
-  sid = true;
 
   if (req.nextUrl.pathname === "/") {
     console.log("here");
