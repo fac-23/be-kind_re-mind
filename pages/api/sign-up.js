@@ -23,7 +23,12 @@ export default async function sign_up(req, res) {
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
 
-      res.setHeader("set-cookie", `sid=${sid}; ${cookie_options}`);
+      const cookies = new Cookies(req, res);
+      cookies.set("sid", `${sid}`, {
+        httpOnly: true, // true by default
+        maxAge: cookie_options.maxAge,
+      });
+
       res.redirect(303, "/home");
       break;
     }
