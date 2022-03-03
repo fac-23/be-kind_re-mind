@@ -33,6 +33,9 @@ export default function Layout({ home, children }) {
           </div>
         )}
       </header>
+      <form method="POST" action="/api/log-out">
+        <button>Log out</button>
+      </form>
       <main>{children}</main>
     </div>
   );
