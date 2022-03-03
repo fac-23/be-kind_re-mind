@@ -21,22 +21,17 @@ export async function saveSession(data) {
 export async function verifyUser(email, password) {
   //calls getUser in model
   const savedUser = await getUser(email);
-  console.log("savedUser", savedUser);
-  bcrypt.compare(password, savedUser[0].password).then((match) => {
-    if (!match) {
-      throw new Error("Password mismatch!");
-    } else {
-      delete savedUser[0].password;
-      return savedUser[0].password;
-    }
-  });
-  return savedUser;
-}
 
-// savedUser in verifyUser auth {
-//   id: 2,
-//   username: 'olij',
-//   email: 'oli@oli.com',
-//   phone: '076664535',
-//   password: '123'
-// }
+  console.log({ savedUser });
+
+  if (savedUser !== []) {
+    return bcrypt.compare(password, savedUser[0].password).then((match) => {
+      if (!match) {
+        return undefined;
+      } else {
+        delete savedUser[0].password;
+        return savedUser;
+      }
+    });
+  }
+}

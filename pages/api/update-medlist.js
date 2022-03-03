@@ -12,8 +12,6 @@ export default async function handler(req, res) {
     notes,
   } = req.body;
 
-  // console.log(req.body);
-
   const addedMedications = await addToMedicationlist(
     medicationType,
     medName,
@@ -24,8 +22,6 @@ export default async function handler(req, res) {
     customTime,
     notes
   );
-
-  // console.log("added meds");
 
   res.status(200).redirect("/medication");
 }

@@ -19,7 +19,15 @@ export default async function sign_up(req, res) {
       const hashedPassword = await hashPassword(password);
 
       //user data is parsed into the createUser in Model.js function which adds new user to DB
-      const user = await createUser(username, email, phone, hashedPassword);
+      const user = await createUser(
+        username,
+        email,
+        phone,
+        hashedPassword
+      ).catch((error) => {
+        console.log(error);
+        res.redirect(303, "/emailError");
+      });
 
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
@@ -38,24 +46,3 @@ export default async function sign_up(req, res) {
       break;
   }
 }
-
-//req.body [Object: null prototype] {
-//   name: 'Jess',
-//   email: 'jess@email',
-//   phone: '000000',
-//   password: 'password'
-// }
-
-// returned from createUser {
-//   username: 'Juliette',
-//   email: 'juliette.orpen@gmail.com',
-//   phone: '07748312234'
-// }
-
-//   console.log(
-//     "destructured in sign up",
-//     username,
-//     email,
-//     phone,
-//     hashedPassword
-//   );
