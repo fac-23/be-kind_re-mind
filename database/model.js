@@ -78,10 +78,8 @@ export function getAllMeds() {
   });
 }
 
-// export function deleteItem(id) {
-//   const DELETE_ITEM = `DELETE FROM medications WHERE medId=$1`;
-//   return db
-//     .query(DELETE_ITEM, [id])
-//     .then((result) => console.log("deleted from table"));
-// }
-
+export function deleteMed(id) {
+  const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
+  console.log("id model", id);
+  return db.query(DELETE_ITEM, [id]).then((result) => result);
+}

@@ -2,7 +2,6 @@ BEGIN;
 
 DROP TABLE IF EXISTS users, sessions, medications CASCADE;
 
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(20),
@@ -16,7 +15,7 @@ CREATE TABLE sessions (
   data TEXT
 );
 
-CREATE TABLE (
+CREATE TABLE medications(
   medId SERIAL PRIMARY KEY,
   userId INTEGER,
   FOREIGN KEY(userId) REFERENCES users(id),
