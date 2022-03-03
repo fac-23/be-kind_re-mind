@@ -6,7 +6,7 @@ import { getAllMeds } from "../database/model";
 
 export async function getServerSideProps() {
   const medicationInfo = await getAllMeds();
-  console.log("medication info", medicationInfo);
+  // console.log("medication info", medicationInfo);
   return {
     props: {
       medicationInfo,
@@ -27,6 +27,7 @@ export default function MedicationPage({ medicationInfo }) {
           {formOpen && <>Hide form</>}
         </button>
         {formOpen === true && <MedicationForm></MedicationForm>}
+
         <MedicineBox
           medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
           medicationInfo={medicationInfo}
