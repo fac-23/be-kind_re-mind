@@ -34,7 +34,7 @@ CREATE TABLE record (
   id SERIAL PRIMARY KEY,
   date DATE,
   user_id INTEGER, FOREIGN KEY(user_id) REFERENCES users(id),
-  med_id INTEGER, FOREIGN KEY(med_id) REFERENCES medications(id),
+  med_id INTEGER, FOREIGN KEY(med_id) REFERENCES medications(id) ON DELETE SET NULL,
   taken BOOLEAN
 );
 
