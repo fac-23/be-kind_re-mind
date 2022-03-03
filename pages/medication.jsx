@@ -26,6 +26,7 @@ export default function MedicationPage({ medicationInfo }) {
           {formOpen && <>Hide form</>}
         </button>
         {formOpen === true && <MedicationForm></MedicationForm>}
+
         <MedicineBox
           medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
           medicationInfo={medicationInfo}
