@@ -26,11 +26,3 @@ export default async function log_in(req, res) {
       break;
   }
 }
-
-// verifiedUser {
-//   id: 2,
-//   username: 'olij',
-//   email: 'oli@oli.com',
-//   phone: '076664535',
-//   password: '123'
-// }
