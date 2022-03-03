@@ -10,7 +10,6 @@ export function createUser(username, email, phone, hashedPassword) {
     });
 }
 
-//   console.log("inside createUser", username, email, phone, hashedPassword);
 
 export function createSession(sid, data) {
   const CREATE_SESSION = `INSERT INTO sessions (sid, data) VALUES ($1, $2) RETURNING sid`;
@@ -89,6 +88,16 @@ export function deleteCurrSession(sid) {
   const DELETE_SESSION = `
     DELETE FROM sessions WHERE sid = $1`;
   return db.query(DELETE_SESSION, [sid]);
+}
+
+
+export function getRecord(user_id) {
+  const GET_RECORD = `
+  SELECT * FROM record WHERE user_id = $1 AND taken = false
+  `;
+  return db.query(GET_RECORD, [user_id]).then((result) => {
+    return result.rows;
+  });
 }
 
 

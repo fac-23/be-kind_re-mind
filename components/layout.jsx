@@ -14,8 +14,8 @@ export default function Layout({ home, children }) {
         {home ? (
           <div>
             <h1>Be-Kind Re-Mind</h1>
-            <Link href="/history">
-              <a>Calendar</a>
+            <Link href="/record">
+              <a>Record</a>
             </Link>
             <Link href="/medication">
               <a>Medication</a>
@@ -24,8 +24,8 @@ export default function Layout({ home, children }) {
         ) : (
           <div>
             <h1>Be-Kind Re-Mind</h1>
-            <Link href="/history">
-              <a>Calendar</a>
+            <Link href="/record">
+              <a>Record</a>
             </Link>
             <Link href="/home">
               <a>Home</a>

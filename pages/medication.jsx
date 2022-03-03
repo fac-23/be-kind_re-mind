@@ -6,7 +6,6 @@ import { getAllMeds } from "../database/model";
 
 export async function getServerSideProps() {
   const medicationInfo = await getAllMeds();
-  // console.log("medication info", medicationInfo);
   return {
     props: {
       medicationInfo,
