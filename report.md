@@ -1,37 +1,56 @@
-# Introduction 
-What are you building?
+# Introduction ✨
 
-An app to remind users to take their medication, that encourages users to meet their medication goals and take their medication consistently
+## What are you building?
+* An app to remind users to take their medication, that encourages users to meet their medication goals and take their medication consistently.
 
-Why are you building it?
-To have a positive impact on people's health, automate their current solution and prevent them missing medication from a changed routine
-
+## Why are you building it?
+* To have a positive impact on people's health, automate their current solution and prevent them missing medication from a changed routine.
 
 ## Project scope 
-What are you not building?
-Not building a full health with other things such as appointments, therapy, surgergy etc.
-
-How did you decide what features were important?
-We focused just on what was needed to remind the users about their medications
+### What are you not building?
+* Not building a full health with other things such as appointments, therapy, surgergy etc.
+### How did you decide what features were important?
+* We focused just on what was needed to remind the users about their medications.
+* Feedback from our user testing decided which features were essential to include.
+* In our design sprint we prioritised our ideas with Miro.
 
 ## Project plan 
-How are you going to structure your sprints?
-What order are you going to build in?
-How did user research inform your plan?
+### How are you going to structure your sprints?
+* Focus on core user stories and break them down into issues. 
+* Use actual and estimate to calculate velocity.
+* 2 build sprints with a review at the end of build 1.
+* Assigning role to each team member.
+### What order are you going to build in?
+* Front end first, authenication and then features.
+* Feature prioritisation: add/delete medicines, heatmap/record tracker, in app notifications, external notifications, reminder of how much medicine is left, reward garden. 
+### How did user research inform your plan?
+* We did user research to understand what they would want from an app using open questions. We then built a prototype based on this information and went back to the users to get their thoughts on the prototype. Following this we altered the prototype to suit the needs of the users.
 
 ## Requirement analysis 
-How will you ensure your project is accessible to as many users as possible?
-Are there any legal or regulatory requirements you should consider?
+### How will you ensure your project is accessible to as many users as possible?
+* Create an issue on accessibility to remind us to review before the end of the project. 
+* Run lighthouse report.
+* Navigate the app by keyboard only.
+
+### Are there any legal or regulatory requirements you should consider?
+* GDPR - dealing with personal data.
 
 ## Project learnings 
-Did your team work effectively?
-What would you do differently next time?
+### Did your team work effectively?
+* 
+### What would you do differently next time?
+* 
 
 ## Research and findings 
-What did you find out from user testing?
+### What did you find out from user testing?
+* Streak was favoured in the user research, users liked to be able to track their progress and see which days they had missed.
+* Verified the navigagtion of our pages, "everything was 2 clicks away".
+* All users wanted an option to reschedule a notification if the current time was not convenient. 
+* Liked the colour scheme.
+* Wanted some level of security and privacy.
 
 ## Project outcomes 
-Were your assumptions right or wrong?
+### Were your assumptions right or wrong?
 
 ## Recommendations and conclusions 
 What features would you prioritise to build next?
