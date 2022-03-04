@@ -25,6 +25,7 @@ export function getUser(email, hashedPassword) {
 }
 
 export function addToMedicationlist(
+  user_id,
   medicationType,
   medName,
   units,
@@ -34,14 +35,14 @@ export function addToMedicationlist(
   customTime,
   notes
 ) {
-  const ADD_MED = `INSERT INTO medications (medicationType,
+  const ADD_MED = `INSERT INTO medications (user_id, medicationType,
     medName,
     units,
     medDose,
     medTime,
     tabCount,
     customTime,
-    notes) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING medicationType,
+    notes) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING user_id, medicationType,
     medName,
     units,
     medDose,
@@ -51,6 +52,7 @@ export function addToMedicationlist(
     notes`;
   return db
     .query(ADD_MED, [
+      user_id,
       medicationType,
       medName,
       units,
@@ -65,9 +67,10 @@ export function addToMedicationlist(
     });
 }
 
-export function getAllMeds() {
-  const GET_ALL_MEDS = `SELECT * FROM medications`;
-  return db.query(GET_ALL_MEDS).then((result) => {
+export function getAllMeds(user_id) {
+  const GET_ALL_MEDS = `SELECT * FROM medications WHERE user_id = $1`;
+  return db.query(GET_ALL_MEDS, [user_id]).then((result) => {
+    console.log(result.rows);
     return result.rows;
   });
 }
@@ -81,6 +84,17 @@ export function deleteCurrSession(sid) {
   const DELETE_SESSION = `
     DELETE FROM sessions WHERE sid = $1`;
   return db.query(DELETE_SESSION, [sid]);
+}
+
+export function getSessionInfo(sid) {
+  const CURRENT_SESSION = `
+    SELECT data FROM sessions WHERE sid = $1`;
+  return db
+    .query(CURRENT_SESSION, [sid])
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((error) => console.log(error));
 }
 
 export function getRecord(user_id) {
