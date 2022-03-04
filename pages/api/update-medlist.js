@@ -1,6 +1,13 @@
-import { addToMedicationlist } from "../../database/model";
+import { addToMedicationlist, getSessionInfo } from "../../database/model";
+import Cookies from "cookies";
 
 export default async function handler(req, res) {
+  console.log(req);
+  const cookies = new Cookies(req, res);
+  const sid = cookies.get("sid").split(",")[0];
+  const userData = await getSessionInfo(sid);
+  const user_id = JSON.parse(userData.data).user_id;
+
   const {
     medicationType,
     medName,
@@ -12,7 +19,8 @@ export default async function handler(req, res) {
     notes,
   } = req.body;
 
-  const addedMedications = await addToMedicationlist(
+  addToMedicationlist(
+    user_id,
     medicationType,
     medName,
     units,

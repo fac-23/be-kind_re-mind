@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function MedicineBox({ medicineObj, medicationInfo }) {
-  // console.log("medication info", medicationInfo[0].id);
   return (
     <div className="box">
       <h2>Your medicines 💊</h2>

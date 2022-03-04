@@ -34,7 +34,6 @@ export default async function sign_up(req, res) {
 
       const cookies = new Cookies(req, res);
       cookies.set("sid", `${sid}`, {
-        httpOnly: true, // true by default
         maxAge: cookie_options.maxAge,
       });
 
