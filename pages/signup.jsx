@@ -14,7 +14,7 @@ export default function Signup() {
         <input type="number" id="phone" name="phone" />
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
-        <button>Sign up</button>
+        <button className="button">Sign up</button>
       </form>
       <Link href={"/"}>
         <a>Back to landing page</a>

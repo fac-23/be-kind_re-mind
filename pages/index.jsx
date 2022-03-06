@@ -1,20 +1,30 @@
 import Link from "next/link";
 import Image from "next/image";
+import styled from "styled-components";
+
+const StyledLogin = styled.a`
+  background: #009444;
+`;
+
+const StyledSignUp = styled.a`
+  background: #fbad17;
+`;
 
 export default function Home() {
   return (
     <div className="flexbox-center-col">
       <Image
+        className="logo"
         src="/logo.svg"
         alt="bekind remind logo"
         width="200px"
         height="200px"
       ></Image>
-      <Link href="/login">
-        <a>Log in</a>
+      <Link href="/login" passHref>
+        <StyledLogin className="button">Log in</StyledLogin>
       </Link>
-      <Link href="/signup">
-        <a>Sign up</a>
+      <Link href="/signup" passHref>
+        <StyledSignUp className="button">Sign up</StyledSignUp>
       </Link>
     </div>
   );
