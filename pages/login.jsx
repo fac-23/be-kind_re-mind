@@ -61,7 +61,7 @@ export default function Login() {
           <input type="password" id="password" name="password" />
           <StyledLogin className="button">Log in</StyledLogin>
         </StyledForm>
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <StyledBackBtn className="button">Back to landing page</StyledBackBtn>
         </Link>
       </StyledDiv>

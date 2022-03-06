@@ -65,7 +65,7 @@ export default function Signup() {
           <input type="password" id="password" name="password" />
           <StyledSignUp className="button">Sign up</StyledSignUp>
         </StyledForm>
-        <Link href={"/"}>
+        <Link href={"/"} passHref>
           <StyledBackBtn className="button">Back to landing page</StyledBackBtn>
         </Link>
       </StyledDiv>
