@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 
-const StyledLogin = styled.a`
+const StyledLogin = styled.button`
   background: #009444;
 
   & :hover {
