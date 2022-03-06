@@ -18,11 +18,19 @@ const StyledSignUp = styled.a`
   }
 `;
 
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  max-width: 30%;
+  width: 100%;
+  margin: 1rem auto;
+`;
+
 export default function Home() {
   return (
-    <div className="flexbox-center-col">
+    <StyledDiv>
       <Image
-        className="logo"
         src="/logo.svg"
         alt="bekind remind logo"
         width="200px"
@@ -34,6 +42,6 @@ export default function Home() {
       <Link href="/signup" passHref>
         <StyledSignUp className="button">Sign up</StyledSignUp>
       </Link>
-    </div>
+    </StyledDiv>
   );
 }

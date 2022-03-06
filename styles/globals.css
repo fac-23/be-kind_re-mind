@@ -20,10 +20,7 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --body-font: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --box-shadow: rgba(108, 112, 116, 0.438) 0px 8px 24px;
-}
-
-.logo {
+  --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .button {
@@ -34,7 +31,7 @@ body {
   cursor: pointer;
   display: inline-block;
   font-family: var(--heading-font);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 20px;
   list-style: none;
   margin: 10px auto;
@@ -45,7 +42,7 @@ body {
   text-decoration: none;
   transition: color 100ms;
   border: none;
-  min-width: 30%;
+  width: 100%;
 }
 
 a {
@@ -64,6 +61,12 @@ a {
 .flexbox-center-col {
   display: flex;
   flex-direction: column;
+  justify-items: center;
+}
+
+.flexbox-row {
+  display: flex;
+  flex-direction: row;
   justify-items: center;
 }
 
