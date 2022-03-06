@@ -4,10 +4,18 @@ import styled from "styled-components";
 
 const StyledLogin = styled.a`
   background: #009444;
+
+  & :hover {
+    background: #025c2b;
+  }
 `;
 
 const StyledSignUp = styled.a`
   background: #fbad17;
+
+  & :hover {
+    background: #cc8c10;
+  }
 `;
 
 export default function Home() {
