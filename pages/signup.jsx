@@ -8,6 +8,7 @@ const StyledSignUp = styled.button`
 
   & :hover {
     background: #025c2b;
+    transform: scale(1.02);
   }
 `;
 
@@ -16,6 +17,7 @@ const StyledBackBtn = styled.a`
 
   & :hover {
     background: #cc8c10;
+    transform: scale(1.02);
   }
 `;
 

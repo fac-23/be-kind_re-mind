@@ -3,18 +3,20 @@ import Image from "next/image";
 import styled from "styled-components";
 
 const StyledLogin = styled.a`
-  background: #009444;
+  background: var(--color-one);
 
   & :hover {
     background: #025c2b;
+    transform: scale(1.02);
   }
 `;
 
 const StyledSignUp = styled.a`
-  background: #fbad17;
+  background: var(--color-two);
 
   & :hover {
     background: #cc8c10;
+    transform: scale(1.02);
   }
 `;
 

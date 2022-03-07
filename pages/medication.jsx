@@ -1,5 +1,6 @@
 import MedicineBox from "../components/medicineBox.jsx";
 import Layout from "../components/layout";
+import Image from "next/image";
 import MedicationForm from "../components/medicationForm.jsx";
 import { useState } from "react";
 import { getAllMeds } from "../database/model";
@@ -27,7 +28,7 @@ export default function MedicationPage({ medicationInfo }) {
   return (
     <div>
       <Layout>
-        <button type="submit" onClick={handleClick}>
+        <button className="button" type="submit" onClick={handleClick}>
           {!formOpen && <>Add Medicines</>}
           {formOpen && <>Hide form</>}
         </button>

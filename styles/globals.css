@@ -10,7 +10,7 @@ body {
   /* #88498F; */
   --color-two: #fbad17;
   /* #779FA1; */
-  --color-three: #edb6a3;
+  --color-three: #6641aa;
   /* #E0CBA8;   */
   --color-four: #69995d;
   /* #EE964B;#FF6542;  */
@@ -54,6 +54,14 @@ a {
   margin: 1rem;
   padding: 1rem;
   border: 1px solid black;
+}
+
+.icons {
+  height: 1.8rem;
+  width: 1.8rem;
+  color: var(--color-two);
+  text-align: center;
+  margin: 0 1.5rem;
 }
 
 /* General spacing classes */
