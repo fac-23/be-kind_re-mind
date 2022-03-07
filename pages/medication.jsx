@@ -27,7 +27,7 @@ export default function MedicationPage({ medicationInfo }) {
   return (
     <div>
       <Layout>
-        <button type="submit" onClick={handleClick}>
+        <button type="submit" id="toggle" onClick={handleClick}>
           {!formOpen && <>Add Medicines</>}
           {formOpen && <>Hide form</>}
         </button>

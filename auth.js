@@ -21,10 +21,7 @@ export async function saveSession(data) {
 export async function verifyUser(email, password) {
   //calls getUser in model
   const savedUser = await getUser(email);
-
-  console.log({ savedUser });
-
-  if (savedUser !== []) {
+  if (savedUser[0]) {
     return bcrypt.compare(password, savedUser[0].password).then((match) => {
       if (!match) {
         return undefined;
