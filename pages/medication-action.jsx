@@ -42,7 +42,6 @@ export default function MedicationAction({ cleanMedDetails }) {
       <div>
         <form className="box" method="POST" action="/api/update-record">
           <h1>Medication reminder</h1>
-          {cleanMedDetails.length}
           {cleanMedDetails.map((med) => (
             <fieldset key={med.id} name={med.id}>
               <legend>

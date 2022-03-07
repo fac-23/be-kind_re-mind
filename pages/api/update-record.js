@@ -1,28 +1,24 @@
 import { updateTaken } from "../../database/model";
 
-function awaitAll(list, asyncFn) {
+function awaitAll(array, asyncFn) {
   const promises = [];
-  list.forEach((x) => {
+  array.forEach((x) => {
     promises.push(asyncFn(x));
   });
   return Promise.all(promises);
 }
 
 export default async function handler(req, res) {
-  //const { taken } = req.body;
-  //console.log("taken", taken);
-  console.log("req.body", req.body);
-  const med_idKeys = Object.keys(req.body);
-  const takenValues = Object.values(req.body);
+  // turn req.body object into an array of arrays with med_id and taken boolean value
   const dbEntries = Object.entries(req.body);
 
-  //console.log(med_idKeys, takenValues);
-  // for await (const key of med_idKeys) {
-  //   console.log(key, "key");
-  // }
-  awaitAll(dbEntries, updateTaken);
+  // filter out values so only true values are updated
+  const takenEntries = dbEntries.filter((entry) => {
+    return entry[1] === "true";
+  });
 
-  //Promise.all([]);
-  //updateTaken(med_idKeys, takenValues);
+  // call await all function which creates an array of promises to call the the SQL query for each item in the array
+  awaitAll(takenEntries, updateTaken);
+
   res.status(200).redirect("/home");
 }

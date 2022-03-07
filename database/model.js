@@ -118,11 +118,10 @@ export function getRecord(user_id) {
 }
 
 export function updateTaken(array) {
-  console.log(array, "array in model");
+  // runs sql to update value of taken to true for the filtered array
   const UPDATE_RECORD = `UPDATE record SET taken = true WHERE med_id = $1`;
 
   return db.query(UPDATE_RECORD, [array[0]]).then((result) => {
-    console.log("db updated", result);
+    console.log("db updated");
   });
 }
-// UPDATE record SET taken = true WHERE med_id = 2;
