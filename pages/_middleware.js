@@ -8,10 +8,9 @@ export default function middleware(req) {
   const sid = req.cookies.sid;
   const url = req.nextUrl.pathname;
 
-  console.log(url);
+  console.log("middleware SID", sid);
 
   if (req.nextUrl.pathname === "/") {
-    console.log("here");
     return response;
   }
 
@@ -20,37 +19,22 @@ export default function middleware(req) {
   //redirect to home
 
   if (!sid && url === "/home") {
-    console.log("no sid");
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
   if (!sid && url === "/history") {
-    console.log("no sid");
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
   if (!sid && url === "/notification") {
-    console.log("no sid");
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
   if (!sid && url === "/medication") {
-    console.log("no sid");
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
   if (!sid && url === "/rewards") {
-    console.log("no sid");
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
-
-  //otherwise send responsex
-
-  //   if (!sid) {
-  //     const url = req.nextUrl.clone();
-  //     url.pathname = "/";
-  //     return NextResponse.redirect(url);
-  //   } else {
-  //     return response;
-  //   }
 }

@@ -3,9 +3,15 @@ import Layout from "../components/layout";
 import MedicationForm from "../components/medicationForm.jsx";
 import { useState } from "react";
 import { getAllMeds } from "../database/model";
+import { getSessionInfo } from "../database/model";
 
-export async function getServerSideProps() {
-  const medicationInfo = await getAllMeds();
+export async function getServerSideProps({ req, res }) {
+  const userData = await getSessionInfo(req.cookies.sid);
+  const user_id = JSON.parse(userData.data).user_id;
+
+  const medicationInfo = await getAllMeds(user_id);
+
+  console.log(medicationInfo);
   return {
     props: {
       medicationInfo,

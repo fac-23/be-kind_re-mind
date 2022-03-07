@@ -1,18 +1,53 @@
-html,
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.6rem;
+  --color-one: #009444;
+  /* #88498F; */
+  --color-two: #fbad17;
+  /* #779FA1; */
+  --color-three: #edb6a3;
+  /* #E0CBA8;   */
+  --color-four: #69995d;
+  /* #EE964B;#FF6542;  */
+  --color-five: #f8e9e9;
+  /* #564154; */
+  --heading-font: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --body-font: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.button {
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  line-height: 20px;
+  list-style: none;
+  margin: 10px auto;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  border: none;
+  width: 100%;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-p a {
-  color: blue;
 }
 
 .box {
@@ -21,14 +56,18 @@ p a {
   border: 1px solid black;
 }
 
+/* General spacing classes */
+
 .flexbox-center-col {
   display: flex;
   flex-direction: column;
   justify-items: center;
 }
 
-* {
-  box-sizing: border-box;
+.flexbox-row {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
 }
 
 .med {

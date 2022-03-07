@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Be-kind Re-mind 🎗️
 
-## Getting Started
+An app to remind and track your medication schedule to ensure you take your medications consitently.
 
-First, run the development server:
+[*Deployed version here!*](https://be-kind-re-mind-ten.vercel.app/) :sparkles:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## How to install 🛠️
+* `git clone https://github.com/fac-23/be-kind_re-mind`
+* run `npm install` in your terminal to install the dependencies.
+* run `npm run dev` in your terminal to start the server.
+* click on the link in the terminal.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## User Stories 👥
+- [ ] As a user I want to be able to decide how I respond to my notications, e.g. skip, reschedule, taken.
+- [ ] As a user I want to see a calendar with a history of when I met my medication goals and show what current I'm on.
+- [x] As a user I want to delete my medication.
+- [ ] As a user I want to recieve notifications in the app about my scheduled medication.
+- [ ] As a user I want a homepage that displays what medication I have taken, updates when there are changes and any reminders/notifications.  
+- [ ] I like to be able to see what medication I took on a certain day (stretch).
+- [ ] As a user I want to login using a 3rd party service (stretch).
+- [ ] As a user I would like to be rewarded with a garden themed reward system (stretch).
+- [ ] As a user I want to be able to reset my password.
+- [x] As a user my information to be available between sessions.
+- [x] As a user I want to be abe to sign-up/login-in securely.
+- [ ] As a user I would like to receive notifications outside the app e.g. text, email etc.
+- [ ] As a user I want to be reminded/ track how much medication I have left.
+- [ ] As a user I want to track my progress with a streak.
+- [x] As a user I want to be able to add my medication schedule (by picking a time or customize my own time) + (name, dose, type, strength, time, notes).
+- [x] As a user I want to log-out to protect my privacy.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Co-authoring 🧑‍🤝‍🧑
+* Co-authored-by: Oli  <78092825+duckRabbitPy@users.noreply.github.com>
+* Co-authored-by: Adam <31065348+adam8-9@users.noreply.github.com>
+* Co-authored-by: Miah <78933903+miahbates@users.noreply.github.com>
+* Co-authored-by: Juliette <53294140+julietteorpen@users.noreply.github.com>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Roles 
+* Scrum facilitator - Adam
+* Quality Assurance - Oli
+* DevOps - Juliette 
+* UX/UI - Miah
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

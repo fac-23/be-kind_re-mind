@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function AlertBox() {
   return (
-    <Link href="/medication-action">
+    <Link href="/medication-action" passHref>
       <a>
         <div className="box">
           <h2>Medication Alert</h2>
