@@ -47,12 +47,18 @@ INSERT INTO users (username, email, phone, password) VALUES
   ('juliettep', 'juliette@juliette.com', '074554535', '123'),
   ('olij', 'oli@oli.com', '076664535','123');
 
-INSERT INTO medications (id, medicationType, medName, medDose, units, tabCount, medTime, customTime, notes) VALUES 
-(1,'tablets','Aspirin',200,'mg',28,'13:00','no','with water');
+INSERT INTO medications (user_id, medicationType, medName, medDose, units, tabCount, medTime, customTime, notes) VALUES 
+(1,'tablets','Aspirin',200,'mg',28,'13:00','no','with water'),
+(1, 'tablets','Paracetemol',500,'mg',28,'15:00','no','for pain'),
+(1, 'tablets','Ramipril',300,'mg',28,'18:00','no','no grapefruit');
+
 
 INSERT INTO record (date, user_id, med_id, taken) VALUES 
 ('2022-03-02 11:00:00',1, 1, true),
+('2022-03-02 18:00:00',1, 2, false),
+('2022-03-02 18:00:00',1, 3, false),
 ('2022-03-02 18:00:00',1, 1, false);
+
 
 
 COMMIT;
