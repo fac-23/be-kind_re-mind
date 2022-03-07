@@ -3,6 +3,10 @@ import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
 
+const StyledCenterLogo = styled.h1`
+  margin: 2rem auto;
+`;
+
 const StyledLogin = styled.button`
   background: #009444;
 
@@ -49,12 +53,14 @@ const StyledDiv = styled.div`
 export default function Login() {
   return (
     <div className="flexbox-center-col">
-      <Image
-        src="/logo.svg"
-        alt="bekind remind logo"
-        width="200px"
-        height="200px"
-      ></Image>
+      <StyledCenterLogo>
+        <Image
+          src="/logo.svg"
+          alt="bekind remind logo"
+          width="200px"
+          height="200px"
+        ></Image>
+      </StyledCenterLogo>
       <StyledDiv>
         <StyledForm action="/api/log-in" method="POST">
           <label htmlFor="email">Email</label>

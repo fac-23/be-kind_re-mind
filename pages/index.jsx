@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 
+const StyledCenterLogo = styled.h1`
+  margin: 2rem auto;
+`;
+
 const StyledLogin = styled.a`
   background: var(--color-one);
 
@@ -32,12 +36,14 @@ const StyledDiv = styled.div`
 export default function Home() {
   return (
     <StyledDiv>
-      <Image
-        src="/logo.svg"
-        alt="bekind remind logo"
-        width="200px"
-        height="200px"
-      ></Image>
+      <StyledCenterLogo>
+        <Image
+          src="/logo.svg"
+          alt="bekind remind logo"
+          width="200px"
+          height="200px"
+        ></Image>
+      </StyledCenterLogo>
       <Link href="/login" passHref>
         <StyledLogin className="button">Log in</StyledLogin>
       </Link>
