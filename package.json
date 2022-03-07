@@ -16,9 +16,11 @@
     "next": "12.1.0",
     "pg": "^8.7.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.6",
     "cypress": "^9.5.0",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0"
