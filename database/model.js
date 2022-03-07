@@ -76,14 +76,25 @@ export function getAllMeds() {
   });
 }
 
+// export function retrieveMedDetails(med_id) {
 //retrieves details of one medication from DB based on the PK of the med
-export function retrieveMedDetails(med_id) {
-  const RETRIEVE_MEDS = `SELECT * FROM medications WHERE id =$1`;
-  return db.query(RETRIEVE_MEDS, [med_id]).then((result) => {
+// export function retrieveMedDetails(med_id) {
+//   const RETRIEVE_MEDS = `SELECT * FROM medications WHERE id =$1`;
+//   return db.query(RETRIEVE_MEDS, [med_id]).then((result) => {
+//     // console.log("retrieve result", result.rows);
+//     return result.rows[0];
+//   });
+// }
+
+export function retrieveMedDetails(user_id) {
+  const RETRIEVE_MEDS = `SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.user_id = $1`;
+  return db.query(RETRIEVE_MEDS, [user_id]).then((result) => {
     // console.log("retrieve result", result.rows);
-    return result.rows[0];
+    return result.rows;
   });
 }
+
+// SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.med_id = 1;
 
 export function deleteMed(id) {
   const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
