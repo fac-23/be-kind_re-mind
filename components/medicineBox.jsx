@@ -24,7 +24,7 @@ const StyledH2 = styled.h2`
   font-family: var(--heading-font);
   margin: 0;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   border-bottom: 1px solid var(--color-one);
   display: inline-block;
 `;
@@ -71,6 +71,11 @@ const StyledInfo = styled.div`
   font-size: 1rem;
   font-family: var(--body-font);
   padding: 0;
+
+  && > p {
+    padding: 0;
+    margin: 0.25rem;
+  }
 `;
 
 const StyledTrashButton = styled.button`
@@ -106,7 +111,7 @@ export default function MedicineBox({ medicineObj, medicationInfo }) {
                 </StyledTitle>
                 <StyledIcons>
                   <FontAwesomeIcon
-                    className="icons"
+                    className="iconTime"
                     size="lg"
                     icon={
                       isNightTime(medication.medtime) ? moon.icon : sun.icon
@@ -121,7 +126,7 @@ export default function MedicineBox({ medicineObj, medicationInfo }) {
                     />
                     <StyledTrashButton type="submit">
                       <FontAwesomeIcon
-                        className="icons"
+                        className="iconTime"
                         size="lg"
                         icon={trash.icon}
                       />

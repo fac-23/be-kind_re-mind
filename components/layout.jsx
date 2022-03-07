@@ -41,7 +41,7 @@ const StyledLogOut = styled.form`
     cursor: pointer;
     display: inline-block;
     font-family: var(--heading-font);
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 20px;
     list-style: none;
     outline: none;
@@ -51,6 +51,7 @@ const StyledLogOut = styled.form`
     text-decoration: none;
     transition: color 100ms;
     border: none;
+    width: 100%;
   }
 `;
 

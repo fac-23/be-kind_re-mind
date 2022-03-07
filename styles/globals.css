@@ -64,6 +64,14 @@ a {
   margin: 1rem;
 }
 
+.iconTime {
+  height: 1.6rem;
+  width: 1.6rem;
+  color: white;
+  text-align: center;
+  margin: 0.4rem;
+}
+
 /* General spacing classes */
 
 .flexbox-center-col {

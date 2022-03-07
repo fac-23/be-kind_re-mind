@@ -10,7 +10,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const StyledToggle = styled.button`
   background: var(--color-two);
-  margin: 1rem;
+  margin: 0 auto;
+  display: block;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
   box-sizing: border-box;
@@ -28,6 +29,7 @@ const StyledToggle = styled.button`
   text-decoration: none;
   transition: color 100ms;
   border: none;
+  width: 90%;
 `;
 
 export async function getServerSideProps({ req, res }) {
