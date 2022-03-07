@@ -1,6 +1,7 @@
 import { createSession, getUser } from "./database/model";
 const crypto = require("crypto");
 import bcrypt from "bcryptjs";
+import { Console } from "console";
 
 export const cookie_options = {
   httpOnly: true,
@@ -21,10 +22,7 @@ export async function saveSession(data) {
 export async function verifyUser(email, password) {
   //calls getUser in model
   const savedUser = await getUser(email);
-
-  console.log({ savedUser });
-
-  if (savedUser !== []) {
+  if (savedUser[0]) {
     return bcrypt.compare(password, savedUser[0].password).then((match) => {
       if (!match) {
         return undefined;

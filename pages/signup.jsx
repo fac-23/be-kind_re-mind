@@ -63,7 +63,9 @@ export default function Signup() {
           <input type="number" id="phone" name="phone" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" />
-          <StyledSignUp className="button">Sign up</StyledSignUp>
+          <StyledSignUp type="submit" className="button">
+            Sign up
+          </StyledSignUp>
         </StyledForm>
         <Link href={"/"} passHref>
           <StyledBackBtn className="button">Back to landing page</StyledBackBtn>

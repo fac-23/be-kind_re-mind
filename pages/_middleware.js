@@ -22,7 +22,7 @@ export default function middleware(req) {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
-  if (!sid && url === "/history") {
+  if (!sid && url === "/record") {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 
@@ -31,6 +31,10 @@ export default function middleware(req) {
   }
 
   if (!sid && url === "/medication") {
+    return NextResponse.rewrite(new URL("/unauthorised", req.url));
+  }
+
+  if (!sid && url === "/medication-action") {
     return NextResponse.rewrite(new URL("/unauthorised", req.url));
   }
 

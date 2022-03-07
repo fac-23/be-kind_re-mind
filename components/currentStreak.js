@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function CurrentStreak({ currentStreak }) {
   return (
-    <Link href="/history">
+    <Link href="/record">
       <a>
         <div className="box">
           <p>Your current streak is: {currentStreak}</p>
