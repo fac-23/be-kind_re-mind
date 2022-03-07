@@ -29,7 +29,7 @@ const FlexRowDiv = styled.div`
 const StyledLogOut = styled.form`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 1rem;
 
   & > button {
@@ -94,15 +94,6 @@ export default function Layout({ home, children }) {
           </div>
         ) : (
           <div className="flexbox-center-col">
-            <StyledLogOut method="POST" action="/api/log-out">
-              <button>Log out</button>
-            </StyledLogOut>
-            <Image
-              src="/logo.svg"
-              alt="bekind remind logo"
-              width="150px"
-              height="150px"
-            ></Image>
             <FlexRowDiv>
               <Link href="/record">
                 <a>
@@ -113,6 +104,12 @@ export default function Layout({ home, children }) {
                   />
                 </a>
               </Link>
+              <Image
+                src="/logo.svg"
+                alt="bekind remind logo"
+                width="120px"
+                height="120px"
+              ></Image>
               <Link href="/home">
                 <a>
                   <FontAwesomeIcon
@@ -127,6 +124,9 @@ export default function Layout({ home, children }) {
         )}
       </header>
       <main>{children}</main>
+      <StyledLogOut method="POST" action="/api/log-out">
+        <button>Log out</button>
+      </StyledLogOut>
     </div>
   );
 }

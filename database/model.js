@@ -92,6 +92,7 @@ export function getSessionInfo(sid) {
   return db
     .query(CURRENT_SESSION, [sid])
     .then((result) => {
+      console.log("result line 95 model", result.rows[0]);
       return result.rows[0];
     })
     .catch((error) => console.log(error));
