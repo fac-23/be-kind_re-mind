@@ -23,7 +23,7 @@ export async function getServerSideProps() {
   });
 
   // console.log("full med details", fullMedDetails);
-  // console.log("clean med details", cleanMedDetails);
+  //console.log("clean med details", cleanMedDetails);
 
   return {
     props: {
@@ -31,20 +31,48 @@ export async function getServerSideProps() {
     },
   };
 }
-export default function MedicationAction() {
+export default function MedicationAction({ cleanMedDetails }) {
+  console.log("cleanMedDetails", cleanMedDetails);
+  //console.log("cleanMedDetails length", cleanMedDetails.length);
+
+  // const reminder = medicationArray
+
   return (
     <Layout>
       <div>
         <form className="box" method="POST" action="/api/update-record">
           <h1>Medication reminder</h1>
-          <p>Have you taken you 3pm props tablets? 🤔</p>
-          <label htmlFor="notification">Yes</label>
-
-          <input type="radio" id="notification" value="true" name="taken" />
-          <label htmlFor="notification">Remind me later</label>
-          <input type="radio" id="notification" value="false" name="taken" />
-          <label htmlFor="notification">I forgot/not taking today</label>
-          <input type="radio" id="notification" value="false" name="taken" />
+          {cleanMedDetails.length}
+          {cleanMedDetails.map((med) => (
+            <fieldset key={med.id} name={med.id}>
+              <legend>
+                Have you taken your {med.medtime}
+                {med.medname}
+                {med.medicationtype}? 🤔
+              </legend>
+              <label htmlFor={med.med_id}>Yes</label>
+              <input
+                type="radio"
+                id={med.med_id}
+                value="true"
+                name={med.med_id}
+              />
+              <label htmlFor={med.med_id}>Remind me later</label>
+              <input
+                type="radio"
+                id={med.med_id}
+                value="false"
+                name={med.med_id}
+              />
+              <label htmlFor={med.med_id}>I forgot/not taking today</label>
+              <input
+                type="radio"
+                id={med.med_id}
+                value="false"
+                name={med.med_id}
+              />
+            </fieldset>
+          ))}
           <button type="submit">Save</button>
         </form>
       </div>

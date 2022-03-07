@@ -116,3 +116,13 @@ export function getRecord(user_id) {
     return result.rows;
   });
 }
+
+export function updateTaken(array) {
+  console.log(array, "array in model");
+  const UPDATE_RECORD = `UPDATE record SET taken = true WHERE med_id = $1`;
+
+  return db.query(UPDATE_RECORD, [array[0]]).then((result) => {
+    console.log("db updated", result);
+  });
+}
+// UPDATE record SET taken = true WHERE med_id = 2;
