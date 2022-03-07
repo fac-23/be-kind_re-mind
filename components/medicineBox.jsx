@@ -99,7 +99,7 @@ function isNightTime(time) {
 export default function MedicineBox({ medicineObj, medicationInfo }) {
   return (
     <StyledDiv className="box">
-      <StyledH2>Your medications:</StyledH2>
+      <StyledH2>Your medicines:</StyledH2>
       <StyledList>
         {medicationInfo &&
           medicationInfo.map((medication) => (
