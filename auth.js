@@ -1,7 +1,6 @@
 import { createSession, getUser } from "./database/model";
 const crypto = require("crypto");
 import bcrypt from "bcryptjs";
-import { Console } from "console";
 
 export const cookie_options = {
   httpOnly: true,
