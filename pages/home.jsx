@@ -7,13 +7,30 @@ import CurrentStreak from "../components/currentStreak";
 import RewardBox from "../components/rewardBox";
 import MedicineBox from "../components/medicineBox";
 import AlertBox from "../components/alertBox";
+import { getSessionInfo, getContactInfo } from "../database/model";
 
-export default function Home() {
+export async function getServerSideProps({ req }) {
+  const userData = await getSessionInfo(req.cookies.sid);
+  const user_id = JSON.parse(userData.data).user_id;
+  const contactInfo = await getContactInfo(user_id);
+  const username = contactInfo.username;
+  const email = contactInfo.email;
+  const phone = contactInfo.phone;
+  return {
+    props: {
+      username,
+      email,
+      phone,
+    },
+  };
+}
+
+export default function Home({ username }) {
   return (
     <div>
       <Layout home>
         <h1>Home</h1>
-        <DisplayName name={"Oli"}></DisplayName>
+        <DisplayName name={`"${username}"`}></DisplayName>
         <CurrentStreak currentStreak={7}></CurrentStreak>
         <AlertBox></AlertBox>
         <MedicationChecklist></MedicationChecklist>
