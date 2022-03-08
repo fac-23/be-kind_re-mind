@@ -9,29 +9,51 @@ export default async function send_message(req, res) {
         return obj.medtime;
       });
 
-      console.log(dailySchedule);
+      console.log("array of time", dailySchedule);
 
-      //   const accountSid = process.env.TWILIO_SID;
-      //   const authToken = process.env.TWILIO_AUTH_TOKEN;
+      // break down daily schedule into 2 digit num
 
-      //   const twilio = require("twilio");
-      //   const client = new twilio(accountSid, authToken);
+      let formatedDailySchedule = dailySchedule.map((time) => {
+        const split = time.split(":");
+        const hour = parseInt(split[0]);
+        return hour;
+        // [13, 15, 18]
+      });
+      console.log("line 23", formatedDailySchedule);
 
-      //   client.messages
-      //     .create({
-      //       body: "Hello from Node",
-      //       to: process.env.DEV_NUM,
-      //       from: process.env.TWILIO_PHONE_NUM,
-      //     })
-      //     .then((message) => {
-      //       console.log(message.sid);
-      //       res.redirect(303, "/home");
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //     });
+      formatedDailySchedule = [13, 16, 17];
+      console.log("line 25", formatedDailySchedule);
 
-      res.redirect(303, "/home");
+      // get current date using get.date/hours
+
+      // let currentTime = new Date().getHours();
+      // console.log("time", parseInt(currentTime));
+
+      if (formatedDailySchedule.includes(currentTime)) {
+        const accountSid = process.env.TWILIO_SID;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+        const twilio = require("twilio");
+        const client = new twilio(accountSid, authToken);
+
+        client.messages
+          .create({
+            body: "You have a medication reminder from Be-Kind Re-Mind",
+            to: process.env.DEV_NUM,
+            from: process.env.TWILIO_PHONE_NUM,
+          })
+          .then((message) => {
+            console.log("message sent", message.sid);
+            res.status(200);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      // compare and if matching then send twilio
+
+      res.status(200);
     }
   }
 }
