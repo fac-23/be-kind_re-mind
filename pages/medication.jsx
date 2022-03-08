@@ -38,7 +38,6 @@ export async function getServerSideProps({ req, res }) {
 
   const medicationInfo = await getAllMeds(user_id);
 
-  console.log(medicationInfo);
   return {
     props: {
       medicationInfo,

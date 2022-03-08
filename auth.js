@@ -10,7 +10,6 @@ export const cookie_options = {
 };
 
 export async function saveSession(data) {
-  console.log("auth saveSession", data);
   //create random sid
   const sid = crypto.randomBytes(18).toString("base64");
   //run create session in model.js, which inserts session into db (data and sid)
