@@ -2,19 +2,25 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 
+const StyledCenterLogo = styled.h1`
+  margin: 2rem auto;
+`;
+
 const StyledLogin = styled.a`
-  background: #009444;
+  background: var(--color-one);
 
   & :hover {
     background: #025c2b;
+    transform: scale(1.02);
   }
 `;
 
 const StyledSignUp = styled.a`
-  background: #fbad17;
+  background: var(--color-two);
 
   & :hover {
     background: #cc8c10;
+    transform: scale(1.02);
   }
 `;
 
@@ -30,12 +36,14 @@ const StyledDiv = styled.div`
 export default function Home() {
   return (
     <StyledDiv>
-      <Image
-        src="/logo.svg"
-        alt="bekind remind logo"
-        width="200px"
-        height="200px"
-      ></Image>
+      <StyledCenterLogo>
+        <Image
+          src="/logo.svg"
+          alt="bekind remind logo"
+          width="200px"
+          height="200px"
+        ></Image>
+      </StyledCenterLogo>
       <Link href="/login" passHref>
         <StyledLogin className="button">Log in</StyledLogin>
       </Link>

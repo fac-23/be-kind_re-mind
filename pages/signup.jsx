@@ -3,11 +3,16 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
+const StyledCenterLogo = styled.h1`
+  margin: 2rem auto;
+`;
+
 const StyledSignUp = styled.button`
   background: #009444;
 
   & :hover {
     background: #025c2b;
+    transform: scale(1.02);
   }
 `;
 
@@ -16,6 +21,7 @@ const StyledBackBtn = styled.a`
 
   & :hover {
     background: #cc8c10;
+    transform: scale(1.02);
   }
 `;
 
@@ -47,12 +53,14 @@ const StyledDiv = styled.div`
 export default function Signup() {
   return (
     <div className="flexbox-center-col">
-      <Image
-        src="/logo.svg"
-        alt="bekind remind logo"
-        width="200px"
-        height="200px"
-      ></Image>
+      <StyledCenterLogo>
+        <Image
+          src="/logo.svg"
+          alt="bekind remind logo"
+          width="200px"
+          height="200px"
+        ></Image>
+      </StyledCenterLogo>
       <StyledDiv>
         <StyledForm action="/api/sign-up" method="POST">
           <label htmlFor="username">Username</label>
@@ -63,7 +71,9 @@ export default function Signup() {
           <input type="number" id="phone" name="phone" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" />
-          <StyledSignUp className="button">Sign up</StyledSignUp>
+          <StyledSignUp type="submit" className="button">
+            Sign up
+          </StyledSignUp>
         </StyledForm>
         <Link href={"/"} passHref>
           <StyledBackBtn className="button">Back to landing page</StyledBackBtn>

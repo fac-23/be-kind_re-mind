@@ -24,6 +24,13 @@ export function getUser(email, hashedPassword) {
   });
 }
 
+export function getContactInfo(user_id) {
+  const GET_USER = `SELECT username, email, phone FROM users WHERE id = $1`;
+  return db.query(GET_USER, [user_id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 export function addToMedicationlist(
   user_id,
   medicationType,
@@ -102,6 +109,7 @@ export function getSessionInfo(sid) {
   return db
     .query(CURRENT_SESSION, [sid])
     .then((result) => {
+      console.log("result line 95 model", result.rows[0]);
       return result.rows[0];
     })
     .catch((error) => console.log(error));
@@ -125,6 +133,8 @@ export function updateTaken(array) {
   });
 }
 
+
 // export function newRecordRow(todayDate) {
 //   const INSERT_ROW = `INSERT INTO record (date, user_id, med_id, taken) VALUES($1, $2, $3, false)`;
 // }
+
