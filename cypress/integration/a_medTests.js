@@ -10,6 +10,7 @@ it("User can add and delete medication", () => {
   cy.visit("/login");
   cy.get("form").find("input[name='email']").type(`user${email}@gmail.com`);
   cy.get("form").find("input[name='password']").type(`pword${password}123`);
+  cy.wait(recoveryTime);
   cy.get("form").find("button[type='submit']").click();
   cy.wait(recoveryTime);
   cy.visit("/medication");
@@ -28,7 +29,7 @@ it("User can add and delete medication", () => {
   cy.get("li").contains("40mg");
   cy.get("li").contains("08:00");
   cy.get("li").contains("for my cholesterol");
-  cy.wait(recoveryTime * 2);
+  cy.wait(recoveryTime * 3);
   cy.get("li").find("button").click();
   cy.get("li").should("not.exist");
 });
