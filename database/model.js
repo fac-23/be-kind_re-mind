@@ -75,7 +75,6 @@ export function getAllMeds(user_id) {
   });
 }
 
-
 export function retrieveMedDetails(user_id) {
   const RETRIEVE_MEDS = `SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.user_id = $1`;
   return db.query(RETRIEVE_MEDS, [user_id]).then((result) => {
@@ -85,8 +84,6 @@ export function retrieveMedDetails(user_id) {
 }
 
 // SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.med_id = 1;
-
-
 
 export function deleteMed(id) {
   const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
@@ -99,7 +96,6 @@ export function deleteCurrSession(sid) {
   return db.query(DELETE_SESSION, [sid]);
 }
 
-
 export function getSessionInfo(sid) {
   const CURRENT_SESSION = `
     SELECT data FROM sessions WHERE sid = $1`;
@@ -111,7 +107,6 @@ export function getSessionInfo(sid) {
     .catch((error) => console.log(error));
 }
 
-
 export function getRecord(user_id) {
   const GET_RECORD = `
   SELECT * FROM record WHERE user_id = $1 AND taken = false
@@ -120,7 +115,6 @@ export function getRecord(user_id) {
     return result.rows;
   });
 }
-
 
 export function updateTaken(array) {
   // runs sql to update value of taken to true for the filtered array
@@ -131,3 +125,6 @@ export function updateTaken(array) {
   });
 }
 
+// export function newRecordRow(todayDate) {
+//   const INSERT_ROW = `INSERT INTO record (date, user_id, med_id, taken) VALUES($1, $2, $3, false)`;
+// }
