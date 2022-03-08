@@ -37,17 +37,17 @@ it("Authentication. Check Sign up, Log in, Log out, Cookies, Route protection", 
 
   cy.visit("/medication");
   cy.wait(recoveryTime);
-  cy.get("h1").should("not.have.text", "Access denied");
+  cy.get("body").should("not.have.text", "Access denied");
 
   cy.visit("/record");
   cy.wait(recoveryTime);
-  cy.get("h1").should("not.have.text", "Access denied");
+  cy.get("body").should("not.have.text", "Access denied");
 
   cy.visit("/rewards");
   cy.wait(recoveryTime);
-  cy.get("h1").should("not.have.text", "Access denied");
+  cy.get("body").should("not.have.text", "Access denied");
 
   cy.visit("/medication-action");
   cy.wait(recoveryTime);
-  cy.get("h1").should("not.have.text", "Access denied");
+  cy.get("body").should("not.have.text", "Access denied");
 });
