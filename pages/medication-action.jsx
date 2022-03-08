@@ -24,11 +24,6 @@ export async function getServerSideProps({ req, res }) {
     return details;
   });
 
-  //function to create new row in DB with today's date
-  const todayDate = new Date();
-  console.log(todayDate);
-  //const createNewRow = await newRecordRow(todayDate);
-
   // console.log("full med details", fullMedDetails);
   console.log("clean med details", cleanMedDetails);
 
