@@ -29,6 +29,12 @@ export default async function sign_up(req, res) {
         res.redirect(303, "/emailError");
       });
 
+      if (!user) {
+        console.warn(
+          "Definitely entered new email? If so query failed due to too many connections."
+        );
+      }
+
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
 

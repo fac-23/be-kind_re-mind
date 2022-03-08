@@ -10,7 +10,8 @@ export function signUpNewUser() {
   cy.get("form").find("button[type='submit']").click();
   cy.url().should("include", "/home");
   cy.getCookie("sid").should("have.property", "httpOnly", true);
-  cy.wait(500);
   cy.get("button[id='logout']").click();
   return { username, email, password };
 }
+
+export const recoveryTime = 800;
