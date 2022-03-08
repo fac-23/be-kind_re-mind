@@ -77,7 +77,6 @@ export function addToMedicationlist(
 export function getAllMeds(user_id) {
   const GET_ALL_MEDS = `SELECT * FROM medications WHERE user_id = $1`;
   return db.query(GET_ALL_MEDS, [user_id]).then((result) => {
-    console.log(result.rows);
     return result.rows;
   });
 }
@@ -85,7 +84,6 @@ export function getAllMeds(user_id) {
 export function retrieveMedDetails(user_id) {
   const RETRIEVE_MEDS = `SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.user_id = $1`;
   return db.query(RETRIEVE_MEDS, [user_id]).then((result) => {
-    // console.log("retrieve result", result.rows);
     return result.rows;
   });
 }
@@ -109,7 +107,6 @@ export function getSessionInfo(sid) {
   return db
     .query(CURRENT_SESSION, [sid])
     .then((result) => {
-      console.log("result line 95 model", result.rows[0]);
       return result.rows[0];
     })
     .catch((error) => console.log(error));

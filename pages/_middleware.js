@@ -8,8 +8,6 @@ export default function middleware(req) {
   const sid = req.cookies.sid;
   const url = req.nextUrl.pathname;
 
-  console.log("middleware SID", sid);
-
   if (req.nextUrl.pathname === "/") {
     return response;
   }
