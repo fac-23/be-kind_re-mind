@@ -132,3 +132,9 @@ export function updateTaken(array) {
     console.log("db updated");
   });
 }
+
+
+// export function newRecordRow(todayDate) {
+//   const INSERT_ROW = `INSERT INTO record (date, user_id, med_id, taken) VALUES($1, $2, $3, false)`;
+// }
+
