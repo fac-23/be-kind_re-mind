@@ -10,7 +10,7 @@ body {
   /* #88498F; */
   --color-two: #fbad17;
   /* #779FA1; */
-  --color-three: #edb6a3;
+  --color-three: #aa57a8;
   /* #E0CBA8;   */
   --color-four: #69995d;
   /* #EE964B;#FF6542;  */
@@ -56,6 +56,22 @@ a {
   border: 1px solid black;
 }
 
+.icons {
+  height: 1.8rem;
+  width: 1.8rem;
+  color: var(--color-two);
+  text-align: center;
+  margin: 1rem;
+}
+
+.iconTime {
+  height: 1.6rem;
+  width: 1.6rem;
+  color: white;
+  text-align: center;
+  margin: 0.4rem;
+}
+
 /* General spacing classes */
 
 .flexbox-center-col {
@@ -70,9 +86,10 @@ a {
   justify-items: center;
 }
 
-.med {
-  border: 2px black solid;
-  padding: 10px;
-  list-style: none;
-  margin: 10px;
+/* Tablet screen and above */
+@media screen and (min-width: 768px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
 }

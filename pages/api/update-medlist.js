@@ -5,6 +5,8 @@ export default async function handler(req, res) {
   console.log(req);
   const cookies = new Cookies(req, res);
   const sid = cookies.get("sid").split(",")[0];
+  console.log("line 8", sid, cookies.get("sid"));
+
   const userData = await getSessionInfo(sid);
   const user_id = JSON.parse(userData.data).user_id;
 

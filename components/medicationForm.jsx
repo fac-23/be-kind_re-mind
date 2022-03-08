@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function MedicationForm() {
   return (
     <form method="POST" action="/api/update-medlist">
