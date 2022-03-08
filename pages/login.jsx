@@ -67,7 +67,9 @@ export default function Login() {
           <input type="email" id="email" name="email" />
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" />
-          <StyledLogin className="button">Log in</StyledLogin>
+          <StyledLogin className="button" type="submit">
+            Log in
+          </StyledLogin>
         </StyledForm>
         <Link href={"/"} passHref>
           <StyledBackBtn className="button">Back to landing page</StyledBackBtn>

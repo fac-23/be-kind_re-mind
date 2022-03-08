@@ -56,6 +56,7 @@ export default function MedicationPage({ medicationInfo }) {
       <Layout>
         <MedicineBox medicationInfo={medicationInfo}></MedicineBox>
         <StyledToggle type="submit" onClick={handleClick}>
+
           {!formOpen && <>Add Medicines</>}
 
           {formOpen && <>Hide form</>}

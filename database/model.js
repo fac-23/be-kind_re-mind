@@ -24,6 +24,13 @@ export function getUser(email, hashedPassword) {
   });
 }
 
+export function getContactInfo(user_id) {
+  const GET_USER = `SELECT username, email, phone FROM users WHERE id = $1`;
+  return db.query(GET_USER, [user_id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 export function addToMedicationlist(
   user_id,
   medicationType,
@@ -75,6 +82,16 @@ export function getAllMeds(user_id) {
   });
 }
 
+export function retrieveMedDetails(user_id) {
+  const RETRIEVE_MEDS = `SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.user_id = $1`;
+  return db.query(RETRIEVE_MEDS, [user_id]).then((result) => {
+    // console.log("retrieve result", result.rows);
+    return result.rows;
+  });
+}
+
+// SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.med_id = 1;
+
 export function deleteMed(id) {
   const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
   return db.query(DELETE_ITEM, [id]).then((result) => result);
@@ -104,5 +121,14 @@ export function getRecord(user_id) {
   `;
   return db.query(GET_RECORD, [user_id]).then((result) => {
     return result.rows;
+  });
+}
+
+export function updateTaken(array) {
+  // runs sql to update value of taken to true for the filtered array
+  const UPDATE_RECORD = `UPDATE record SET taken = true WHERE med_id = $1`;
+
+  return db.query(UPDATE_RECORD, [array[0]]).then((result) => {
+    console.log("db updated");
   });
 }

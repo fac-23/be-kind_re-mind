@@ -124,6 +124,7 @@ export default function Layout({ home, children }) {
           </div>
         )}
       </header>
+
       <main>{children}</main>
       <StyledLogOut method="POST" action="/api/log-out">
         <button>Log out</button>
