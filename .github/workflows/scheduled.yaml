@@ -1,27 +1,27 @@
-# name: hourly-cron-job
+# # name: hourly-cron-job
+# # on:
+# #   schedule:
+# #     - cron: "*/60 * * * *"
+# # jobs:
+# #   cron:
+# #     runs-on: ubuntu-latest
+# #     steps:
+# #       - name: hourly-cron-job
+# #         run: |
+# #           curl --request POST \
+# #           --url 'https://be-kind-re-mind-ten.vercel.app/api/fake-send-message' \
+# #           --header 'Authorization: Bearer ${{ secrets.ACTION_KEY }}'
+
+# name: test-cron-job
 # on:
 #   schedule:
-#     - cron: "*/60 * * * *"
+#     - cron: "* * * * *"
 # jobs:
 #   cron:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - name: hourly-cron-job
+#       - name: test-cron-job
 #         run: |
 #           curl --request POST \
 #           --url 'https://be-kind-re-mind-ten.vercel.app/api/fake-send-message' \
 #           --header 'Authorization: Bearer ${{ secrets.ACTION_KEY }}'
-
-name: test-cron-job
-on:
-  schedule:
-    - cron: "* * * * *"
-jobs:
-  cron:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test-cron-job
-        run: |
-          curl --request POST \
-          --url 'https://be-kind-re-mind-ten.vercel.app/api/fake-send-message' \
-          --header 'Authorization: Bearer ${{ secrets.ACTION_KEY }}'

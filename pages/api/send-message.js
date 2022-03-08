@@ -13,8 +13,8 @@ export default async function send_message(req, res) {
 
       // break down daily schedule into 2 digit num
 
-      let formatedDailySchedule = dailySchedule.map((time) => {
-        const split = time.split(":");
+      let formatedDailySchedule = dailySchedule.map((element) => {
+        const split = element.split(":");
         const hour = parseInt(split[0]);
         return hour;
         // [13, 15, 18]
@@ -26,8 +26,8 @@ export default async function send_message(req, res) {
 
       // get current date using get.date/hours
 
-      // let currentTime = new Date().getHours();
-      // console.log("time", parseInt(currentTime));
+      let currentTime = new Date().getHours();
+      console.log("time", parseInt(currentTime));
 
       if (formatedDailySchedule.includes(currentTime)) {
         const accountSid = process.env.TWILIO_SID;
