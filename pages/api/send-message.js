@@ -1,6 +1,6 @@
 export default async function send_message(req, res) {
   switch (req.method) {
-    case "GET": {
+    case "POST": {
       const accountSid = process.env.TWILIO_SID;
       const authToken = process.env.TWILIO_AUTH_TOKEN;
 
