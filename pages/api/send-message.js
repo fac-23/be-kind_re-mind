@@ -1,5 +1,6 @@
 import { getAllMeds } from "../../database/model";
 
+// check header send back matching key
 export default async function send_message(req, res) {
   switch (req.method) {
     case "POST": {
@@ -39,7 +40,7 @@ export default async function send_message(req, res) {
 
             client.messages
               .create({
-                body: "You have a medication reminder from Be-Kind Re-Mind",
+                body: "You have a medication reminder from Be-Kind Re-Mind. Visit https://be-kind-re-mind-ten.vercel.app/",
                 to: process.env.DEV_NUM,
                 from: process.env.TWILIO_PHONE_NUM,
               })
