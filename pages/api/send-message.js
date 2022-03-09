@@ -24,9 +24,6 @@ export default async function send_message(req, res) {
         });
         console.log("line 23", formatedDailySchedule);
 
-        formatedDailySchedule = [13, 14, 15];
-        console.log("line 25", formatedDailySchedule);
-
         // get current date using get.date/hours
 
         let currentTime = new Date().getHours();
