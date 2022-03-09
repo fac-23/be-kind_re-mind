@@ -43,6 +43,7 @@ export async function getServerSideProps({ req }) {
     return Promise.all(promises);
   }
 
+  //check records takes the user_id
   const checkRecords = await checkRecord(user_id, cleanDate);
   console.log(checkRecords, "checkRecords line 46 in home");
   //function to create new row in DB with today's date
