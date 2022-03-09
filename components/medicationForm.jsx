@@ -1,23 +1,78 @@
 import styled from "styled-components";
 
+const StyledHeader = styled.h3`
+  color: var(--color-two);
+  font-family: var(--heading-font);
+  text-align: center;
+  font-size: 1.6rem;
+  border-bottom: 1px solid var(--color-one);
+  display: inline-block;
+  margin: 0 auto;
+`;
+
+const StyledTypesRow1 = styled.div`
+  margin: 1rem;
+  padding: 1rem;
+`;
+
+const StyledTypesRow2 = styled.div`
+  margin: 1rem;
+  padding: 1rem;
+`;
+
+const StyledForm = styled.form`
+  border: 3px solid var(--color-one);
+`;
+
+const StyledInput = styled.span`
+  background: red;
+  input {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  label[for="medicationType"] {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 20px;
+    font-family: sans-serif, Arial;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #bfb;
+    border-color: #4c4;
+  }
+`;
+
+function CustomInput({ id, name }) {
+  return (
+    <StyledInput>
+      <input type="radio" id={id} value={id} name="medicationType" />
+      <label htmlFor="medicationType">{name}</label>
+    </StyledInput>
+  );
+}
+
 export default function MedicationForm() {
   return (
-    <form method="POST" action="/api/update-medlist">
-      <div className="box">
-        <input
-          type="radio"
-          id="tablets"
-          value="tablets"
-          name="medicationType"
-        />
-        <label htmlFor="medicationType">Tablets</label>
-        <input type="radio" id="liquid" value="liquid" name="medicationType" />
-        <label htmlFor="medicationType">Liquid</label>
-        <input type="radio" id="cream" value="cream" name="medicationType" />
-        <label htmlFor="medicationType">Cream</label>
-        <input type="radio" id="other" value="other" name="medicationType" />
-        <label htmlFor="medicationType">Other</label>
-      </div>
+    <StyledForm
+      className="flexbox-center-col"
+      method="POST"
+      action="/api/update-medlist"
+    >
+      <StyledHeader>Select a medicine type:</StyledHeader>
+      <StyledTypesRow1>
+        <CustomInput id="tablets" name="Tablets" />
+        <CustomInput id="liquid" name="Liquid" />
+      </StyledTypesRow1>
+      <StyledTypesRow2>
+        <CustomInput id="cream" name="Cream" />
+        <CustomInput id="other" name="Other" />
+      </StyledTypesRow2>
 
       <label htmlFor="medName">Name</label>
       <input type="text" name="medName" required />
@@ -71,6 +126,6 @@ export default function MedicationForm() {
       <textarea name="notes" id="notes"></textarea>
 
       <button type="submit">Save</button>
-    </form>
+    </StyledForm>
   );
 }

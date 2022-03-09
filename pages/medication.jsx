@@ -10,26 +10,25 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const StyledToggle = styled.button`
   background: var(--color-two);
-  margin: 0 auto;
+  margin: 1rem;
   display: block;
   box-shadow: var(--box-shadow);
   border-radius: 5px;
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
-  display: inline-block;
   font-family: var(--heading-font);
   font-size: 1.2rem;
   line-height: 20px;
   list-style: none;
   outline: none;
-  padding: 10px 16px;
+  padding: 0.5rem;
   position: relative;
   text-align: center;
   text-decoration: none;
   transition: color 100ms;
   border: none;
-  width: 90%;
+  width: calc(100% - 2rem);
 `;
 
 export async function getServerSideProps({ req, res }) {
@@ -57,7 +56,7 @@ export default function MedicationPage({ medicationInfo }) {
         <StyledToggle id="toggle" type="submit" onClick={handleClick}>
           {!formOpen && <>Add Medicines</>}
 
-          {formOpen && <>Hide form</>}
+          {formOpen && <>Close Add Medicines</>}
         </StyledToggle>
         {formOpen === true && <MedicationForm></MedicationForm>}
       </Layout>

@@ -33,13 +33,14 @@ const StyledLogOut = styled.form`
   margin: 1rem;
 
   & > button {
+    margin: 0 auto;
     background: var(--color-two);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
     box-sizing: border-box;
     color: #ffffff;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     font-family: var(--heading-font);
     font-size: 1.2rem;
     line-height: 20px;
