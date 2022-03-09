@@ -3,18 +3,20 @@ import Layout from "../components/layout";
 import {
   //getRecord,
   retrieveMedDetails,
-  //getSessionInfo,
+  getSessionInfo,
+  //newRecordRow,
 } from "../database/model";
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ req, res }) {
   //look up user_id in db
-  // const userData = await getSessionInfo(req.cookies.sid);
-  // const user_id = JSON.parse(userData.data).user_id;
-  // console.log("user_id", user_id);
+  const userData = await getSessionInfo(req.cookies.sid);
+  const user_id = JSON.parse(userData.data).user_id;
+  console.log("user_id", user_id);
 
   //function that runs db query on medications and record tables on inner join, returning array of objects where taken = false and user_id = $1  parsed as argument
-  const fullMedDetails = await retrieveMedDetails(1);
+  const fullMedDetails = await retrieveMedDetails(user_id);
 
+  //clean the date in the med details so it is accepted by React
   const cleanMedDetails = fullMedDetails.map((details) => {
     const stringDate = String(details.date);
     const cleanDate = stringDate.slice(0, 10);
@@ -23,7 +25,7 @@ export async function getServerSideProps() {
   });
 
   // console.log("full med details", fullMedDetails);
-  //console.log("clean med details", cleanMedDetails);
+  console.log("clean med details", cleanMedDetails);
 
   return {
     props: {

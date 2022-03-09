@@ -129,3 +129,23 @@ export function updateTaken(array) {
     console.log("db updated");
   });
 }
+
+export function newRecordRow(date, user_id, med_id) {
+  const INSERT_ROW = `INSERT INTO record (date, user_id, med_id, taken) VALUES($1, $2, $3, false)`;
+  return db.query(INSERT_ROW, date, user_id, med_id).then((result) => {
+    console.log("rows added to db");
+  });
+}
+
+export function checkRecord(user_id, today) {
+  const CHECK_RECORD = `
+  SELECT * FROM record WHERE user_id = $1 AND date = $2
+  `;
+  return db.query(CHECK_RECORD, [user_id, today]).then((result) => {
+    if (result.rows.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}
