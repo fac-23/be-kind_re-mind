@@ -1,7 +1,7 @@
 import { getAllMeds } from "../../database/model";
 
 export default async function send_message(req, res) {
-  const { ACTION_KEY } = req.headers.authorization.split(" ")[1];
+  const { ACTION_KEY } = req.headers;
 
   console.log(ACTION_KEY);
   console.log(process.env.APP_KEY);
