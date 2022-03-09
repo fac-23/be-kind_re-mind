@@ -57,7 +57,7 @@ export default function MedicationPage({ medicationInfo }) {
   // Detect formOpen has changed - scroll into view
   useEffect(() => {
     if (formOpen) {
-      myRef.current.scrollIntoView();
+      myRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [formOpen]);
 
