@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import MedicineBox from "../components/medicineBox.jsx";
 import Layout from "../components/layout";
 import MedicationForm from "../components/medicationForm.jsx";
@@ -5,8 +6,6 @@ import { useState } from "react";
 import { getAllMeds } from "../database/model";
 import { getSessionInfo } from "../database/model";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const StyledToggle = styled.button`
   background: var(--color-two);
@@ -29,6 +28,11 @@ const StyledToggle = styled.button`
   transition: color 100ms;
   border: none;
   width: calc(100% - 2rem);
+
+  & :hover {
+    background: #cc8c10;
+    transform: scale(0.99);
+  }
 `;
 
 export async function getServerSideProps({ req, res }) {
@@ -46,6 +50,17 @@ export async function getServerSideProps({ req, res }) {
 
 export default function MedicationPage({ medicationInfo }) {
   const [formOpen, setFormOpen] = useState(false);
+
+  // Create a reference to div
+  const myRef = useRef(null);
+
+  // Detect formOpen has changed - scroll into view
+  useEffect(() => {
+    if (formOpen) {
+      myRef.current.scrollIntoView();
+    }
+  }, [formOpen]);
+
   function handleClick() {
     setFormOpen((prevState) => !prevState);
   }
@@ -58,6 +73,8 @@ export default function MedicationPage({ medicationInfo }) {
 
           {formOpen && <>Close Add Medicines</>}
         </StyledToggle>
+        {/* Assign div to myRef */}
+        <div ref={myRef}></div>
         {formOpen === true && <MedicationForm></MedicationForm>}
       </Layout>
     </div>

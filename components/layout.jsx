@@ -53,6 +53,11 @@ const StyledLogOut = styled.form`
     transition: color 100ms;
     border: none;
     width: 100%;
+
+    & :hover {
+      background: #cc8c10;
+      transform: scale(0.99);
+    }
   }
 `;
 
