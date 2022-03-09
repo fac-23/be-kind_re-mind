@@ -8,7 +8,7 @@ export default async function send_message(req, res) {
 
   switch (req.method) {
     case "GET": {
-      if (ACTION_KEY === process.env.APP_KEY) {
+      if (true) {
         const record = await getAllMeds(1);
 
         const dailySchedule = record.map((obj) => {
@@ -60,7 +60,9 @@ export default async function send_message(req, res) {
 
       // compare and if matching then send twilio
 
-      res.status(200).send("Status 200. From App");
+      res
+        .status(200)
+        .send(`Status 200. Request headers: ${ACTION_KEY} Req ${req}`);
     }
   }
 }
