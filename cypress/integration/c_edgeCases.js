@@ -1,4 +1,4 @@
-import { signUpNewUser, recoveryTime } from "../support/helpers";
+import { signUpNewUser } from "../support/helpers";
 
 beforeEach(() => {
   cy.task("resetDb");
@@ -23,7 +23,6 @@ it("User eror shown if uses wrong password", () => {
   cy.get("form").find("input[name='email']").type(`user${email}@gmail.com`);
   cy.get("form").find("input[name='password']").type(`wrongpassword`);
   cy.get("form").find("button[type='submit']").click();
-  cy.wait(recoveryTime / 2);
   cy.url().should("include", "/loginError");
 });
 
@@ -34,6 +33,5 @@ it("User error if uses wrong email", () => {
   cy.get("form").find("input[name='email']").type(`wrong@gmail.com`);
   cy.get("form").find("input[name='password']").type(`pword${password}123`);
   cy.get("form").find("button[type='submit']").click();
-  cy.wait(recoveryTime / 2);
   cy.url().should("include", "/loginError");
 });

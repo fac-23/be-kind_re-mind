@@ -14,4 +14,4 @@ export function signUpNewUser() {
   return { username, email, password };
 }
 
-export const recoveryTime = 800;
+export const recoveryTime = 1;
