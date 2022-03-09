@@ -60,13 +60,7 @@ export default async function send_message(req, res) {
 
       // compare and if matching then send twilio
 
-      res
-        .status(200)
-        .send(
-          `Status 200. Request headers: ${
-            req.ACTION_KEY
-          } getResponseHeader${JSON.stringify(req)}`
-        );
+      res.status(200).send(`Status 200. Request headers: ${req.ACTION_KEY}`);
     }
   }
 }
