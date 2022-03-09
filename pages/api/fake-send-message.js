@@ -63,8 +63,9 @@ export default async function send_message(req, res) {
       res
         .status(200)
         .send(
-          `Status 200. Request headers: ${req.ACTION_KEY}` +
-            ` getResponseHeader${req.getResponseHeader()}`
+          `Status 200. Request headers: ${
+            req.ACTION_KEY
+          } getResponseHeader${JSON.stringify(req)}`
         );
     }
   }
