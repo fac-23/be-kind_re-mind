@@ -1,10 +1,10 @@
 import { getAllMeds } from "../../database/model";
 
 export default async function send_message(req, res) {
-  const { ACTION_KEY } = req.headers;
+  //   const { ACTION_KEY } = req.headers;
 
-  console.log(ACTION_KEY);
-  console.log(process.env.APP_KEY);
+  //   console.log(ACTION_KEY);
+  //   console.log(process.env.APP_KEY);
 
   switch (req.method) {
     case "GET": {
@@ -62,7 +62,10 @@ export default async function send_message(req, res) {
 
       res
         .status(200)
-        .send(`Status 200. Request headers: ${ACTION_KEY} Req ${req}`);
+        .send(
+          `Status 200. Request headers: ${req.ACTION_KEY}` +
+            ` getResponseHeader${req.getResponseHeader()}`
+        );
     }
   }
 }
