@@ -13,7 +13,8 @@ import {
   getStreak,
   getAllMeds,
   newRecordRow,
-  checkRecord,
+  retrieveAllMedDetails,
+  collectTodaysRecords,
 } from "../database/model";
 
 export async function getServerSideProps({ req }) {
@@ -43,10 +44,13 @@ export async function getServerSideProps({ req }) {
     return Promise.all(promises);
   }
 
-  const checkRecords = await checkRecord(user_id, cleanDate);
-  //function to create new row in DB with today's date
+  const todaysRecords = await collectTodaysRecords(user_id, cleanDate);
 
-  if (checkRecords === false) {
+  const existingRecordForToday = todaysRecords.length > 0 ? true : false;
+  //function returns medicine details for todays scheduled medicines
+  //if there are none scheduled, update record with new entries for each medicine
+  //it only runs once a day
+  if (existingRecordForToday === false) {
     awaitAll(newRowArray, newRecordRow);
   }
 
@@ -59,7 +63,6 @@ export async function getServerSideProps({ req }) {
   });
 
   const lastFail = JSON.stringify(notTodayFails[0].date).slice(1, 11);
-  console.log("lastFail", lastFail);
 
   const date1 = new Date(lastFail);
   const date2 = new Date();
@@ -71,17 +74,28 @@ export async function getServerSideProps({ req }) {
 
   const streak = Math.floor(Difference_In_Days);
 
+  //for display on homepage
+  const allMedDetails = await retrieveAllMedDetails(user_id);
+
+  console.log("allMEdDetails", allMedDetails);
+  const showDaily = allMedDetails.map((record) => {
+    return { name: record.medname, taken: record.taken };
+  });
+
+  console.log(showDaily);
+
   return {
     props: {
       username,
       email,
       phone,
       streak,
+      showDaily,
     },
   };
 }
 
-export default function Home({ username, streak }) {
+export default function Home({ username, streak, showDaily }) {
   return (
     <div>
       <Layout home>
@@ -89,10 +103,7 @@ export default function Home({ username, streak }) {
         <DisplayName name={`"${username}"`}></DisplayName>
         <CurrentStreak currentStreak={streak}></CurrentStreak>
         <AlertBox></AlertBox>
-        <MedicationChecklist></MedicationChecklist>
-        <MedicineBox
-          medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
-        ></MedicineBox>
+        <MedicationChecklist showDaily={showDaily}></MedicationChecklist>
         <RewardBox></RewardBox>
       </Layout>
     </div>
