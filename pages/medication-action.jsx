@@ -56,9 +56,19 @@ const StyledForm = styled.form`
     color: var(--color-two);
     font-family: var(--heading-font);
     border-bottom: 1px solid var(--color-one);
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 0.5rem auto;
-    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 360px) {
+    h1 {
+      background: font-size: 1.1rem;
+      border: none;
+      width: 100%;
+      font-size: 1.2rem;
+
+    }
   }
 `;
 
@@ -75,9 +85,14 @@ const StyledInputBox = styled.div`
     cursor: pointer;
   }
 
+  input[type="radio"] {
+    cursor: pointer;
+  }
+
   fieldset {
+    font-size: 1.3rem;
     border: none;
-    margin: 2rem;
+    margin:0.25rem 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -108,7 +123,7 @@ const StyledInputBox = styled.div`
   div {
     padding: 0.5rem;
     font-family: var(--body-font);
-    font-size: 1rem;
+    font-size: 1.1rem;
     border: none;
     border-radius: 5px;
     color: white;
@@ -117,6 +132,23 @@ const StyledInputBox = styled.div`
 
   div:focus {
     border: 2px solid var(--color-one);
+  }
+
+  @media only screen and (max-width: 360px) {
+   legend {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      width: 100%;
+    }
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    div {
+      margin: 0.5rem 0.5rem;
+    }
   }
 `;
 
@@ -129,6 +161,16 @@ const StyledPurple = styled.div`
     justify-content: center;
     align-items: center;
   }
+
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const StyledGreen = styled.div`
@@ -139,6 +181,15 @@ const StyledGreen = styled.div`
     justify-content: center;
     align-items: center;
   }
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 const StyledYellow = styled.div`
@@ -148,6 +199,15 @@ const StyledYellow = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
   }
 `;
 
