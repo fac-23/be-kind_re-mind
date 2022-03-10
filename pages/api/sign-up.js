@@ -39,7 +39,7 @@ export default async function sign_up(req, res) {
       const sid = await saveSession({ user_id: user.id });
 
       //only send emails to valid email addresses, don't sent with tests
-      if (!email.includes(".TEST")) {
+      if (!email.includes(".TEST") && !email.includes(".test")) {
         const sgMail = require("@sendgrid/mail");
         sgMail.setApiKey(process.env.SENDGRID_API_KEY);
         const msg = {
