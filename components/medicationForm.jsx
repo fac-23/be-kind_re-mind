@@ -270,8 +270,9 @@ export default function MedicationForm() {
           <input type="radio" id="medTime" value="22:00" name="medTime" />
           <label htmlFor="medTime">22:00</label>
         </div>
+      </StyledSchedule>
 
-        <StyledTime className="box">
+      {/* <StyledTime className="box">
           <div className="box">
             <label htmlFor="customTime">Custom time:</label>
             <input
@@ -282,8 +283,7 @@ export default function MedicationForm() {
               name="customTime"
             />
           </div>
-        </StyledTime>
-      </StyledSchedule>
+  </StyledTime>*/}
 
       <StyleNote>
         <div className="box">
