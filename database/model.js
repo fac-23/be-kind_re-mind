@@ -149,3 +149,11 @@ export function checkRecord(user_id, today) {
     }
   });
 }
+
+export function getStreak(user_id) {
+  const CHECK_STREAK = `SELECT date FROM record WHERE user_id = $1 AND taken = false ORDER BY date DESC`;
+
+  return db.query(CHECK_STREAK, [user_id]).then((result) => {
+    return result.rows;
+  });
+}
