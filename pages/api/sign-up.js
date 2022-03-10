@@ -45,9 +45,9 @@ export default async function sign_up(req, res) {
         const msg = {
           to: email,
           from: "duck.rabbit.python@gmail.com", // Change to your verified sender
-          subject: "Thanks for signing up to Be-kind re-mind",
+          subject: "Thanks for signing up to Be-kind Re-mind",
           text: "Add your medications to get started :)",
-          html: "<strong>Contact us by email if you forget your password</strong>",
+          html: "<h1>Welcome</h1><h4>Thanks for signing up to <b>Be-kind Re-mind</b> 🌼</h4></br></br><p>It's great you're taking steps to fight forgetfulness!</p> <p><a href='https://be-kind-re-mind-ten.vercel.app/medication'>Add your medications</a> to get started 💊!</p></br><p> Please contact us by email if you forget your password 🔐</p>",
         };
         sgMail
           .send(msg)
