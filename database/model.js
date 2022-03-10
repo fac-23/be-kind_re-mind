@@ -88,7 +88,12 @@ export function retrieveMedDetails(user_id) {
   });
 }
 
-// SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.taken = false AND record.med_id = 1;
+export function retrieveAllMedDetails(user_id) {
+  const RETRIEVE_MEDS = `SELECT * FROM medications INNER JOIN record ON medications.id = record.med_id WHERE record.user_id = $1`;
+  return db.query(RETRIEVE_MEDS, [user_id]).then((result) => {
+    return result.rows;
+  });
+}
 
 export function deleteMed(id) {
   const DELETE_ITEM = `DELETE FROM medications WHERE id=$1`;
@@ -137,16 +142,12 @@ export function newRecordRow(date, user_id, med_id) {
   });
 }
 
-export function checkRecord(user_id, today) {
+export function collectTodaysRecords(user_id, today) {
   const CHECK_RECORD = `
   SELECT * FROM record WHERE user_id = $1 AND date = $2
   `;
   return db.query(CHECK_RECORD, [user_id, today]).then((result) => {
-    if (result.rows.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return result.rows;
   });
 }
 

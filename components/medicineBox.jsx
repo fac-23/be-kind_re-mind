@@ -95,7 +95,7 @@ function isNightTime(time) {
   return isNight;
 }
 
-export default function MedicineBox({ medicineObj, medicationInfo }) {
+export default function MedicineBox({ medicationInfo }) {
   return (
     <StyledDiv className="box">
       <StyledH2>Your medicines:</StyledH2>
