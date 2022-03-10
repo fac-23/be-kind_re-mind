@@ -21,7 +21,7 @@ export default function MedicationChecklist({ showDaily }) {
         {showDaily &&
           showDaily.map((elem) => {
             return !elem.taken ? (
-              <li key={elem.name}>{elem.name} taken 🚥</li>
+              <li key={elem.name}>{elem.name} not taken 🚥</li>
             ) : (
               ""
             );
