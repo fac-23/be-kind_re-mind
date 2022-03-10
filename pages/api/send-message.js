@@ -2,10 +2,11 @@ import { getAllMeds } from "../../database/model";
 
 export default async function send_message(req, res) {
   const ACTION_KEY = req.headers.action_key;
-
   switch (req.method) {
     case "GET": {
-      if (ACTION_KEY === process.env.APP_KEY) {
+      //To protect
+      // ACTION_KEY === process.env.APP_KEY
+      if (true) {
         const record = await getAllMeds(1);
 
         const dailySchedule = record.map((obj) => {
@@ -28,6 +29,9 @@ export default async function send_message(req, res) {
 
         let currentTime = new Date().getHours();
         // console.log("time", parseInt(currentTime));
+
+        //DEMO PURPOSES ONLY
+        formatedDailySchedule = [10, 12, 13, 14, 15, 16, 17, 18];
 
         if (formatedDailySchedule.includes(currentTime)) {
           const accountSid = process.env.TWILIO_SID;
@@ -52,7 +56,7 @@ export default async function send_message(req, res) {
         }
       }
 
-      res.status(200).send(`Status 200`);
+      res.status(200).send(`Status 200.`);
     }
   }
 }

@@ -4,25 +4,8 @@ beforeEach(() => {
   cy.task("resetDb");
 });
 
-it("Authentication. Check Sign up, Log in, Log out, Cookies, Route protection", () => {
+it("Authentication. Check Sign up, Log in, Log out, Can access routes with cookie", () => {
   const { username, email, password } = signUpNewUser();
-  cy.getCookie("sid").should("not.exist");
-
-  cy.visit("/home");
-  cy.get("h1").contains("Access denied");
-
-  cy.visit("/medication");
-  cy.get("h1").contains("Access denied");
-
-  cy.visit("/record");
-  cy.get("h1").contains("Access denied");
-
-  cy.visit("/rewards");
-  cy.get("h1").contains("Access denied");
-
-  cy.visit("/medication-action");
-  cy.get("h1").contains("Access denied");
-
   cy.visit("/login");
   cy.get("form")
     .find("input[name='email']")
@@ -46,4 +29,23 @@ it("Authentication. Check Sign up, Log in, Log out, Cookies, Route protection", 
 
   cy.visit("/medication-action");
   cy.get("body").should("not.have.text", "Access denied");
+});
+
+it("cannot access protected routes without cookie", () => {
+  cy.getCookie("sid").should("not.exist");
+
+  cy.visit("/home");
+  cy.get("h1").contains("Access denied");
+
+  cy.visit("/medication");
+  cy.get("h1").contains("Access denied");
+
+  cy.visit("/record");
+  cy.get("h1").contains("Access denied");
+
+  cy.visit("/rewards");
+  cy.get("h1").contains("Access denied");
+
+  cy.visit("/medication-action");
+  cy.get("h1").contains("Access denied");
 });
