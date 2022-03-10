@@ -7,6 +7,210 @@ import {
   //newRecordRow,
 } from "../database/model";
 
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleCheck,
+  faCircleXmark,
+  faHourglass,
+} from "@fortawesome/free-solid-svg-icons";
+
+const StyledButton = styled.button`
+  background: var(--color-one);
+  margin: 1rem;
+  display: block;
+  box-shadow: var(--box-shadow);
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  line-height: 20px;
+  list-style: none;
+  outline: none;
+  padding: 0.5rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  border: none;
+  width: calc(100% - 2rem);
+
+  & :hover {
+    background: #cc8c10;
+    transform: scale(0.99);
+  }
+`;
+
+const StyledForm = styled.form`
+  border: 3px solid var(--color-one);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-sizing: border-box;
+  margin: 2rem;
+
+  h1 {
+    color: var(--color-two);
+    font-family: var(--heading-font);
+    border-bottom: 1px solid var(--color-one);
+    font-size: 2.5rem;
+    margin: 0.5rem auto;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 360px) {
+    h1 {
+      background: font-size: 1.1rem;
+      border: none;
+      width: 100%;
+      font-size: 1.2rem;
+
+    }
+  }
+`;
+
+const StyledInputBox = styled.div`
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+  div:hover {
+    transform: scale(1.1);
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type="radio"] {
+    cursor: pointer;
+  }
+
+  fieldset {
+    font-size: 1.3rem;
+    border: none;
+    margin:0.25rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    
+  }
+
+  legend {
+    font-family: var(--heading-font);
+    border: solid 3px var(--color-two);
+    margin: 1rem auto;
+    padding: 0.5rem;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+  }
+
+  label {
+    font-family: var(--body-font);
+  }
+
+  input[type="radio"] {
+    background-color: var(--color-one);
+    padding: 1rem;
+    font-family: var(--body-font);
+    font-size: 1rem;
+  }
+
+  div {
+    padding: 0.5rem;
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin 0 0.5rem;
+  }
+
+  div:focus {
+    border: 2px solid var(--color-one);
+  }
+
+  @media only screen and (max-width: 360px) {
+   legend {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+      width: 100%;
+    }
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    div {
+      margin: 0.5rem 0.5rem;
+    }
+  }
+`;
+
+const StyledPurple = styled.div`
+  background: var(--color-three);
+
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+const StyledGreen = styled.div`
+  background: var(--color-one);
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+const StyledYellow = styled.div`
+  background: var(--color-two);
+  label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @media only screen and (max-width: 360px) {
+    label {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+  }
+`;
+
 export async function getServerSideProps({ req, res }) {
   //look up user_id in db
   const userData = await getSessionInfo(req.cookies.sid);
@@ -42,40 +246,70 @@ export default function MedicationAction({ cleanMedDetails }) {
   return (
     <Layout>
       <div>
-        <form className="box" method="POST" action="/api/update-record">
+        <StyledForm method="POST" action="/api/update-record">
           <h1>Medication reminder</h1>
-          {cleanMedDetails.map((med) => (
-            <fieldset key={med.id} name={med.id}>
-              <legend>
-                Have you taken your {med.medtime}
-                {med.medname}
-                {med.medicationtype}? 🤔
-              </legend>
-              <label htmlFor={med.med_id}>Yes</label>
-              <input
-                type="radio"
-                id={med.med_id}
-                value="true"
-                name={med.med_id}
-              />
-              <label htmlFor={med.med_id}>Remind me later</label>
-              <input
-                type="radio"
-                id={med.med_id}
-                value="false"
-                name={med.med_id}
-              />
-              <label htmlFor={med.med_id}>I forgot/not taking today</label>
-              <input
-                type="radio"
-                id={med.med_id}
-                value="false"
-                name={med.med_id}
-              />
-            </fieldset>
-          ))}
-          <button type="submit">Save</button>
-        </form>
+          <StyledInputBox>
+            {cleanMedDetails.map((med) => (
+              <fieldset key={med.id} name={med.id}>
+                <legend>
+                  Have you taken your {med.medtime} {med.medname}{" "}
+                  {med.medicationtype}? 🤔
+                </legend>
+                <StyledGreen>
+                  <input
+                    type="radio"
+                    id={med.med_id}
+                    value="true"
+                    name={med.med_id}
+                  />
+                  <label htmlFor={med.med_id}>
+                    Yes, I have taken today{" "}
+                    <FontAwesomeIcon
+                      className="iconTime"
+                      size="lg"
+                      icon={faCircleCheck}
+                    />
+                  </label>
+                </StyledGreen>
+
+                <StyledPurple>
+                  <input
+                    type="radio"
+                    id={med.med_id}
+                    value="false"
+                    name={med.med_id}
+                  />
+                  <label htmlFor={med.med_id}>
+                    Remind me later
+                    <FontAwesomeIcon
+                      className="iconTime"
+                      size="lg"
+                      icon={faHourglass}
+                    />
+                  </label>
+                </StyledPurple>
+
+                <StyledYellow>
+                  <input
+                    type="radio"
+                    id={med.med_id}
+                    value="false"
+                    name={med.med_id}
+                  />
+                  <label htmlFor={med.med_id}>
+                    Not taken today
+                    <FontAwesomeIcon
+                      className="iconTime"
+                      size="lg"
+                      icon={faCircleXmark}
+                    />
+                  </label>
+                </StyledYellow>
+              </fieldset>
+            ))}
+          </StyledInputBox>
+          <StyledButton type="submit">Save</StyledButton>
+        </StyledForm>
       </div>
     </Layout>
   );
