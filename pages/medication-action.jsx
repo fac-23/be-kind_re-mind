@@ -263,7 +263,7 @@ export default function MedicationAction({ cleanMedDetails }) {
                     name={med.med_id}
                   />
                   <label htmlFor={med.med_id}>
-                    Yes, I've taken today{" "}
+                    Yes, I have taken today{" "}
                     <FontAwesomeIcon
                       className="iconTime"
                       size="lg"
