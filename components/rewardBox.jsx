@@ -6,9 +6,8 @@ export default function RewardBox() {
   return (
     <Link href="/rewards">
       <a>
-        <div className="box">
-          <h2>Rewards</h2>Check out your plant progress 🪴🌻
-        </div>
+        <h2>Rewards</h2>
+        <p>Check out your plant progress 🌻</p>
       </a>
     </Link>
   );

@@ -3,8 +3,8 @@ import React from "react";
 export default function MedicationChecklist({ showDaily }) {
   //Medicine name, medicine time, taken not taken
   return (
-    <div className="box">
-      <h3>Taken</h3>
+    <div>
+      <h3>Todays Stats</h3>
       <ul>
         {showDaily &&
           showDaily.map((elem) => {
@@ -16,7 +16,6 @@ export default function MedicationChecklist({ showDaily }) {
           })}
       </ul>
 
-      <h3>Not taken</h3>
       <ul>
         {showDaily &&
           showDaily.map((elem) => {
