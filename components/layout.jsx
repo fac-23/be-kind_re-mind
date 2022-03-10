@@ -33,13 +33,14 @@ const StyledLogOut = styled.form`
   margin: 1rem;
 
   & > button {
+    margin: 0 auto;
     background: var(--color-two);
     box-shadow: var(--box-shadow);
     border-radius: 5px;
     box-sizing: border-box;
     color: #ffffff;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     font-family: var(--heading-font);
     font-size: 1.2rem;
     line-height: 20px;
@@ -52,6 +53,11 @@ const StyledLogOut = styled.form`
     transition: color 100ms;
     border: none;
     width: 100%;
+
+    & :hover {
+      background: #cc8c10;
+      transform: scale(0.99);
+    }
   }
 `;
 
@@ -62,12 +68,8 @@ export default function Layout({ home, children }) {
         <title>Be-Kind Re-Mind</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="shortcut icon" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,700&family=Poppins:wght@300;700&display=swap"
-          rel="stylesheet"
-        ></link>
+        {/* <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
+        {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin /> */}
       </Head>
       <header>
         {home ? (

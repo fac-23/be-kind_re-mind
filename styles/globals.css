@@ -64,12 +64,20 @@ a {
   margin: 1rem;
 }
 
+.icons:hover {
+  transform: scale(1.1);
+}
+
 .iconTime {
-  height: 1.6rem;
-  width: 1.6rem;
+  height: 1.8rem;
+  width: 1.8rem;
   color: white;
   text-align: center;
-  margin: 0.4rem;
+  margin: 1rem;
+}
+
+.iconTime:hover {
+  transform: scale(1.1);
 }
 
 /* General spacing classes */
