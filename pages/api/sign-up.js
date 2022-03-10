@@ -38,6 +38,27 @@ export default async function sign_up(req, res) {
       //session saved in auth which calls createSession in model
       const sid = await saveSession({ user_id: user.id });
 
+      //only send emails to valid email addresses, don't sent with tests
+      if (!email.includes(".TEST") && !email.includes(".test")) {
+        const sgMail = require("@sendgrid/mail");
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+          to: email,
+          from: "duck.rabbit.python@gmail.com", // Change to your verified sender
+          subject: "Thanks for signing up to Be-kind Re-mind",
+          text: "Add your medications to get started :)",
+          html: "<h1>Welcome</h1><h4>Thanks for signing up to <b>Be-kind Re-mind</b> 🌼</h4></br></br><p>It's great you're taking steps to fight forgetfulness!</p> <p><a href='https://be-kind-re-mind-ten.vercel.app/medication'>Add your medications</a> to get started 💊!</p></br><p> Please contact us by email if you forget your password 🔐</p>",
+        };
+        sgMail
+          .send(msg)
+          .then(() => {
+            console.log("Email sent");
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+
       const cookies = new Cookies(req, res);
       cookies.set("sid", `${sid}`, {
         maxAge: cookie_options.maxAge,
