@@ -8,7 +8,9 @@ it("User can mark medications as taken and have them removed from notification",
   const { email, password } = signUpNewUser();
 
   cy.visit("/login");
-  cy.get("form").find("input[name='email']").type(`user${email}@gmail.com`);
+  cy.get("form")
+    .find("input[name='email']")
+    .type(`user${email}@gmail.com.TEST`);
   cy.get("form").find("input[name='password']").type(`pword${password}123`);
   cy.get("form").find("button[type='submit']").click();
   cy.visit("/medication");

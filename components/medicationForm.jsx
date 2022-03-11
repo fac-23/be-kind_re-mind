@@ -220,7 +220,7 @@ export default function MedicationForm() {
       method="POST"
       action="/api/update-medlist"
     >
-      <StyledHeader>Select a medicine type:</StyledHeader>
+      <StyledHeader>Select a medicine type</StyledHeader>
       <StyledMedType>
         <CustomInput id="tablets" name="Tablets" icon={faPills} />
         <CustomInput id="injection" name="Injection" icon={faSyringe} />
@@ -274,7 +274,7 @@ export default function MedicationForm() {
 
       {/* <StyledTime className="box">
           <div className="box">
-            <label htmlFor="customTime">Custom time:</label>
+            <label htmlFor="customTime">Custom time</label>
             <input
               min="05:00"
               max="23:00"

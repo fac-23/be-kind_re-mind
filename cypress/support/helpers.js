@@ -4,7 +4,9 @@ export function signUpNewUser() {
   const password = Math.random().toString(36).slice(6);
   cy.visit("/signup");
   cy.get("form").find("input[name='username']").type(`User${username}`);
-  cy.get("form").find("input[name='email']").type(`user${email}@gmail.com`);
+  cy.get("form")
+    .find("input[name='email']")
+    .type(`user${email}@gmail.com.TEST`);
   cy.get("form").find("input[name='phone']").type(`07865431257`);
   cy.get("form").find("input[name='password']").type(`pword${password}123`);
   cy.get("form").find("button[type='submit']").click();
