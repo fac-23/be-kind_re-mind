@@ -149,3 +149,12 @@ export function checkRecord(user_id, today) {
     }
   });
 }
+
+export function getFullRecord(user_id) {
+  const GET_RECORD = `
+  SELECT taken, date FROM record WHERE user_id = $1
+  `;
+  return db.query(GET_RECORD, [user_id]).then((result) => {
+    return result.rows;
+  });
+}

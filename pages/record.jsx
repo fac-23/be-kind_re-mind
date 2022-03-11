@@ -2,85 +2,136 @@ import React from "react";
 import CurrentStreak from "../components/currentStreak";
 import Layout from "../components/layout";
 import { HeatMapGrid } from "react-grid-heatmap";
+import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
+import { getSessionInfo, getFullRecord } from "../database/model";
+import { cleanFullWeekArr, scoreDataArr } from "./data";
+import styled from "styled-components";
 
-//need to work out how we will split the months -
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const xLabels = new Array(26).fill(0).map((_, i) => {
-  `${i}`;
-});
-const yLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const data = new Array(yLabels.length)
-  .fill(0)
-  .map(() =>
-    new Array(xLabels.length)
-      .fill(0)
-      .map(() => Math.floor(Math.random() * 50 + 50))
-  );
+const StyledList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
 
-//data suggestion would be that the taken values are mapped over and true becomes 1, false becomes 0
-// that way each date has a score which will dictate the color of the square
+const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+`;
 
-const takenData = [
-  [0, 0, 1],
-  [1, 1, 0],
-  [0, 1, 1],
-  [0, 0, 1],
-  [1, 1, 0],
-  [0, 1, 1],
-  [0, 0, 1],
-  [1, 1, 0],
-  [0, 1, 1],
-];
+const StyledTitle = styled.h3`
+  font-family: var(--heading-font);
+`;
 
-export default function Record() {
+export async function getServerSideProps({ req, res }) {
+  const userData = await getSessionInfo(req.cookies.sid);
+  const user_id = JSON.parse(userData.data).user_id;
+
+  //queries db and returns all record data for user
+  const fullRecordData = await getFullRecord(1);
+
+  //map over the array of records and replace SQL with JS date then add day of week key with value for relevant day
+  const fullRecord = fullRecordData.map((record) => {
+    const stringDate = String(record.date).slice(0, 10);
+    record.date = stringDate;
+    const dayOfWeek = new Date(record.date).getDay();
+    //console.log(dayOfWeek);
+    record.DOW = dayOfWeek;
+    // const recordObj = { taken: date.taken, date: dayOfWeek };
+    return record;
+  });
+
+  //sort into date order
+  const sortedFullRecord = fullRecord.sort((a, b) => {
+    return a.date - b.date;
+  });
+
+  // console.log(51, sortedFull);
+  //place sorted inside another array - need to refactor this is a temp fix for old code
+  const fullWeek = [sortedFullRecord];
+
+  //turn array of objects into array of arrays in order to group by date
+  function objToArray(arr) {
+    const heatmapArr = arr.map((record) => {
+      //console.log(record, "record");
+      return Object.values(record);
+    });
+    //console.log(heatmapArr);
+    return heatmapArr;
+  }
+
+  const editedData = fullWeek.map((record) => {
+    return objToArray(record);
+  });
+  // then flatten edited data
+  const flatData = editedData.flat(1);
+
+  // currently hardcord but should be a db query to check their number of meds
+  const numbofMeds = 3;
+  //loop through arrays and create divide into days based on no. of meds taking each day
+  const groupedData = [];
+  for (let i = 0; i < flatData.length; i += numbofMeds) {
+    const dateArray = flatData.slice(i, i + numbofMeds);
+    groupedData.push(dateArray);
+  }
+  //create a score for each day based on the number of meds taken that day
+  const scoreData = groupedData.map((nestArr) => {
+    let score = 0;
+    for (let i = 0; i < nestArr.length; i++) {
+      if (nestArr[i][0] === true) {
+        score++;
+      }
+    }
+    return score;
+  });
+
+  // console.log("MAP DATA", scoreData);
+  //console.log("FULL WEEK", fullWeek);
+
+  const byDayArray = [];
+  for (let i = 0; i < sortedFullRecord.length; i += numbofMeds) {
+    const dateArray = sortedFullRecord.slice(i, i + numbofMeds);
+    byDayArray.push(dateArray);
+  }
+  console.log(98, byDayArray);
+  //first object in byDayArray now has the score
+  const dayScore = byDayArray.map((day, ind, arr) => {
+    day[0].score = scoreData[ind];
+    return day;
+  });
+  //console.log(101, dayScore);
+
+  return {
+    props: { dayScore },
+  };
+}
+
+export default function Record({ dayScore }) {
   return (
     <Layout>
       <div>
         <h1>Calendar</h1>
         <h2>Current Streak</h2>
         <CurrentStreak currentStreak={7}></CurrentStreak>
-        <HeatMapGrid
-          data={data}
-          xLabels={xLabels}
-          yLabels={yLabels}
-          // Reder cell with tooltip
-          cellRender={(x, y, value) => (
-            <div title={`Pos(${x}, ${y}) = ${value}`}>{value}</div>
-          )}
-          xLabelsStyle={(index) => ({
-            color: index % 2 ? "transparent" : "#777",
-            fontSize: ".65rem",
-          })}
-          yLabelsStyle={() => ({
-            fontSize: ".65rem",
-            textTransform: "uppercase",
-            color: "#777",
-          })}
-          cellStyle={(_x, _y, ratio) => ({
-            background: `rgb(12, 160, 44, ${ratio})`,
-            fontSize: ".7rem",
-            color: `rgb(0, 0, 0, ${ratio / 2 + 0.4})`,
-          })}
-          cellHeight="1.5rem"
-          xLabelsPos="bottom"
-          onClick={(x, y) => alert(`Clicked (${x}, ${y})`)}
-          // yLabelsPos="right"
-          // square
-        />
+        <StyledList>
+          {dayScore &&
+            dayScore.map((day) => (
+              <div>
+                {day[0].date} Score: {day[0].score} <br />
+              </div>
+            ))}
+        </StyledList>
       </div>
     </Layout>
   );
 }
+
+// byDayArray[0]
+//[
+//   { taken: true, date: 'Mon Feb 14', DOW: 1 },
+//   { taken: true, date: 'Mon Feb 14', DOW: 1 },
+//   { taken: true, date: 'Mon Feb 14', DOW: 1 },
+//   score: 3
+// ]
