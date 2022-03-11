@@ -185,7 +185,6 @@ export async function getServerSideProps({ req }) {
 
   const todaysRecords = await collectTodaysRecords(user_id, cleanDate);
 
-
   const existingRecordForToday = todaysRecords.length > 0 ? true : false;
   //function returns medicine details for todays scheduled medicines
   //if there are none scheduled, update record with new entries for each medicine
@@ -236,6 +235,7 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function Home({ username, streak, showDaily }) {
+  console.log("streak", streak);
   return (
     <div>
       <Layout home>
@@ -243,7 +243,7 @@ export default function Home({ username, streak, showDaily }) {
           <DisplayName name={`${username}`}></DisplayName>
         </StyledDiv>
         <StyledStreak>
-          <CurrentStreak currentStreak={streak}></CurrentStreak>
+          <CurrentStreak streak={streak}></CurrentStreak>
         </StyledStreak>
         <StyledAlert>
           {showDaily.some((element) => {
