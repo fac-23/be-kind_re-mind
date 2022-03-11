@@ -64,13 +64,13 @@ export default function Signup() {
       <StyledDiv>
         <StyledForm action="/api/sign-up" method="POST">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" required name="username" />
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" required name="email" />
           <label htmlFor="phone">Phone Number</label>
-          <input type="number" id="phone" name="phone" />
+          <input type="number" id="phone" required name="phone" />
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" required name="password" />
           <StyledSignUp type="submit" className="button">
             Sign up
           </StyledSignUp>

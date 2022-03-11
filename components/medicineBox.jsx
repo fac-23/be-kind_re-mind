@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
@@ -96,7 +95,7 @@ function isNightTime(time) {
   return isNight;
 }
 
-export default function MedicineBox({ medicineObj, medicationInfo }) {
+export default function MedicineBox({ medicationInfo }) {
   return (
     <StyledDiv className="box">
       <StyledH2>Your medicines:</StyledH2>

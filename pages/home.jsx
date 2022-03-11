@@ -10,9 +10,11 @@ import AlertBox from "../components/alertBox";
 import {
   getSessionInfo,
   getContactInfo,
+  getStreak,
   getAllMeds,
   newRecordRow,
-  checkRecord,
+  retrieveAllMedDetails,
+  collectTodaysRecords,
 } from "../database/model";
 
 export async function getServerSideProps({ req }) {
@@ -32,7 +34,6 @@ export async function getServerSideProps({ req }) {
   const newRowArray = medArray.map((meds) => {
     return [cleanDate, user_id, meds.id];
   });
-  //console.log(newRowArray);
 
   //Promise all function
   function awaitAll(array, asyncFn) {
@@ -43,36 +44,67 @@ export async function getServerSideProps({ req }) {
     return Promise.all(promises);
   }
 
-  //check records takes the user_id
-  const checkRecords = await checkRecord(user_id, cleanDate);
-  console.log(checkRecords, "checkRecords line 46 in home");
-  //function to create new row in DB with today's date
+  const todaysRecords = await collectTodaysRecords(user_id, cleanDate);
 
-  if (checkRecords === false) {
+
+  const existingRecordForToday = todaysRecords.length > 0 ? true : false;
+  //function returns medicine details for todays scheduled medicines
+  //if there are none scheduled, update record with new entries for each medicine
+  //it only runs once a day
+  if (existingRecordForToday === false) {
     awaitAll(newRowArray, newRecordRow);
   }
+
+  const allFails = await getStreak(1);
+
+  const notTodayFails = allFails.filter((dateKVP) => {
+    const cleanDate = JSON.stringify(dateKVP.date).slice(1, 11);
+    const today = new Date();
+    return cleanDate !== JSON.stringify(today).slice(1, 11);
+  });
+
+  const lastFail = JSON.stringify(notTodayFails[0].date).slice(1, 11);
+
+  const date1 = new Date(lastFail);
+  const date2 = new Date();
+
+  // To calculate the time difference of two dates
+  const Difference_In_Time = date2.getTime() - date1.getTime();
+  // To calculate the no. of days between two dates
+  const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+  const streak = Math.floor(Difference_In_Days);
+
+  //for display on homepage
+  const allMedDetails = await retrieveAllMedDetails(user_id);
+
+  console.log("allMEdDetails", allMedDetails);
+  const showDaily = allMedDetails.map((record) => {
+    return { name: record.medname, taken: record.taken };
+  });
+
+  console.log(showDaily);
 
   return {
     props: {
       username,
       email,
       phone,
+      streak,
+      showDaily,
     },
   };
 }
 
-export default function Home({ username }) {
+export default function Home({ username, streak, showDaily }) {
   return (
     <div>
       <Layout home>
         <h1>Home</h1>
         <DisplayName name={`"${username}"`}></DisplayName>
-        <CurrentStreak currentStreak={7}></CurrentStreak>
+        <CurrentStreak currentStreak={streak}></CurrentStreak>
         <AlertBox></AlertBox>
-        <MedicationChecklist></MedicationChecklist>
-        <MedicineBox
-          medicineObj={{ drug: "Ramipril", remaining: 7, total: 28 }}
-        ></MedicineBox>
+        <MedicationChecklist showDaily={showDaily}></MedicationChecklist>
         <RewardBox></RewardBox>
       </Layout>
     </div>
