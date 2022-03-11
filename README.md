@@ -2,7 +2,7 @@
 
 An app to remind and track your medication schedule to ensure you take your medications consitently.
 
-[*Deployed version here!*](https://be-kind-re-mind-ten.vercel.app/) :sparkles:
+[*Deployed version here!*](https://be-kind-re-mind-omega.vercel.app/) :sparkles:
 
 ## How to install 🛠️
 * `git clone https://github.com/fac-23/be-kind_re-mind`
