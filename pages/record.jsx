@@ -64,7 +64,7 @@ export async function getServerSideProps({ req, res }) {
   const user_id = JSON.parse(userData.data).user_id;
 
   //queries db and returns all record data for user
-  const fullRecordData = await getFullRecord(1);
+  const fullRecordData = await getFullRecord(user_id);
 
   //map over the array of records and replace SQL with JS date then add day of week key with value for relevant day
   const fullRecord = fullRecordData.map((record) => {
