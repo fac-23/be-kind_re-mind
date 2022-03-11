@@ -4,7 +4,6 @@ import Layout from "../components/layout";
 import { HeatMapGrid } from "react-grid-heatmap";
 import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import { getSessionInfo, getFullRecord } from "../database/model";
-import { cleanFullWeekArr, scoreDataArr } from "./data";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
