@@ -37,9 +37,19 @@
 
 ## Project learnings 
 ### Did your team work effectively?
-* 
+Yes, worked well in pairs. 
+We had good file structure which helped us naviagte well around the app.
+Good time management.
+### Learnings
+* More comfortable using next.js using server-side props and api routes.
+* New technology - twilio, cron, github actions, send grid.
+* Styled components.
+* SQL queries.
+
 ### What would you do differently next time?
-* 
+* More research into heatmap, maybe install package to see how it works and how it can interact with our data.
+* Re-look into populate record bug.
+* Share out styling.
 
 ## Research and findings 
 ### What did you find out from user testing?
@@ -51,26 +61,33 @@
 
 ## Project outcomes 
 ### Were your assumptions right or wrong?
+Wrong, over estimated the amout we could build in the time.
 
 ## Recommendations and conclusions 
-What features would you prioritise to build next?
-Was the project a success?
+### What features would you prioritise to build next?
+* Heatmap.
+* Rewards.
+
+### Was the project a success?
+* Yes! Has core functionality with some nifty features.
 
 ## Software Development Lifecycle stages 
-
-## Planning 
+### Planning 
 What roles did your team take on?
+Scrum - Adam - project board, stand-ups, tracking team progress.
+DevOps - Juliette - project set up, github actions?
+QA - Oli - testing, cypress, cleaning up the code, remove console log, appropriately named variables.
+UX/UI - Miah - styling, design, accessibility.
 
-Explain the roles and responsibilities of all people working within the software development lifecycle, and how they relate to the project (K2)
-
-Did these roles help your team work effectively?
-Outline how teams work effectively to produce software and how to contribute appropriately (K6) Compare and contrast the requirements of a software development team, and how they would ensure that each member (including themselves) were able to make a contribution (K6)
+### Did these roles help your team work effectively?
+* Yes, allowed us to focus on an area of the application but we also worked in pairs on certain features.
 
 ## Analysis 
-What might be the intended and unintended consequences of building this product?
+### What might be the intended and unintended consequences of building this product?
+* Missed/Double medication if issue with notification.
 
 ## Design 
-How did you plan a user experience?
+##How did you plan a user experience?
 What technical decisions did you make?
 Server-render vs client-render vs both
 Relational or non-relational or no DB
