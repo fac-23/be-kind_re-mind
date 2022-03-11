@@ -52,8 +52,6 @@ INSERT INTO medications (user_id, medicationType, medName, medDose, units, tabCo
 (1, 'tablets','Paracetemol',500,'mg',28,'15:00','no','for pain'),
 (1, 'tablets','Ramipril',300,'mg',28,'18:00','no','no grapefruit');
 
-
-INSERT INTO record (date, user_id, med_id, taken) VALUES
 INSERT INTO record (date, user_id, med_id, taken) VALUES
 ('2022-02-12 18:00:00',1, 1, true),
 ('2022-02-12 18:00:00',1, 2, true),

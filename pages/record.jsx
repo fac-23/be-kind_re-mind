@@ -9,6 +9,7 @@ import styled from "styled-components";
 const StyledList = styled.ul`
   margin: 0;
   padding: 0;
+  font-family: var(--heading-font);
   list-style: none;
 `;
 
@@ -18,6 +19,12 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 1rem;
+`;
+
+const StyledCurrentStreak = styled.div`
+  p {
+    font-family: var(--heading-font);
+  }
 `;
 
 const StyledTitle = styled.h3`
@@ -147,7 +154,9 @@ export default function Record({ dayScore, streak }) {
     <Layout>
       <StyledDiv className="box">
         <StyledH2>Current Streak</StyledH2>
-        <CurrentStreak streak={streak}></CurrentStreak>
+        <StyledCurrentStreak>
+          <CurrentStreak streak={streak}></CurrentStreak>
+        </StyledCurrentStreak>
         <StyledList>
           {dayScore &&
             dayScore.map((day) => (
