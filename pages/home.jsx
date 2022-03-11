@@ -247,8 +247,12 @@ export default function Home({ username, streak, showDaily }) {
         </StyledStreak>
         <StyledAlert>
           {showDaily.some((element) => {
-            element.taken === false;
-          }) && <AlertBox></AlertBox>}
+            return element.taken === false;
+          }) ? (
+            <AlertBox></AlertBox>
+          ) : (
+            "All up to date 👍"
+          )}
         </StyledAlert>
         <StyledMeds>
           <MedicationChecklist showDaily={showDaily}></MedicationChecklist>
