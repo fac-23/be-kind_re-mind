@@ -131,7 +131,7 @@ export default function Record({ dayScore }) {
         <StyledList>
           {dayScore &&
             dayScore.map((day) => (
-              <div>
+              <div key={day}>
                 {day[0].date} Score: {day[0].score} <br />
               </div>
             ))}
