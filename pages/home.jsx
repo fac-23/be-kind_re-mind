@@ -46,6 +46,7 @@ export async function getServerSideProps({ req }) {
 
   const todaysRecords = await collectTodaysRecords(user_id, cleanDate);
 
+
   const existingRecordForToday = todaysRecords.length > 0 ? true : false;
   //function returns medicine details for todays scheduled medicines
   //if there are none scheduled, update record with new entries for each medicine
