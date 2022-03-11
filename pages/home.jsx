@@ -16,6 +16,145 @@ import {
   retrieveAllMedDetails,
   collectTodaysRecords,
 } from "../database/model";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
+
+const StyledDiv = styled.div`
+color: var(--color-two);
+font-size: 1.5rem;
+font-family: var(--heading-font);
+display: inline-block;
+margin: 1rem;
+
+@media only screen and (min-width: 560px) {
+  div {
+  font-size: 2.4rem;
+  }
+`;
+
+const StyledStreak = styled.div`
+background: var(--color-one);
+margin: 0 1rem;
+font-size: 1rem;
+font-family: var(--heading-font);
+color: white;
+padding: 0.5rem;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+p {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+margin: 0.25rem;
+}
+
+
+@media only screen and (min-width: 560px) {
+  div {
+  font-size: 1.6rem;
+  }
+  p {
+    padding: 1rem;
+  }
+
+`;
+
+const StyledAlert = styled.div`
+  background: #dc143c;
+  margin: 0.5rem 1rem;
+  font-family: var(--heading-font);
+  color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 1rem;
+
+  h2 {
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    margin: 0.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  @media only screen and (min-width: 560px) {
+    p, h2 {
+      font-size: 1.6rem;
+      padding: 0.5rem 2rem;
+    }
+`;
+
+const StyledRewards = styled.div`
+  background: var(--color-two);
+  margin: 0 1rem;
+  font-family: var(--heading-font);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+  h2 {
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    margin: 0.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0.25rem;
+  }
+   
+  @media only screen and (min-width: 560px) {
+    h2 {
+      font-size: 1.8rem;
+      
+    }
+    p {
+      font-size: 1.6rem;
+      
+    }
+`;
+
+const StyledMeds = styled.div`
+  background: var(--color-three);
+  margin: 1rem;
+  font-family: var(--heading-font);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  li {
+    font-size: 1rem;
+    margin: 0.25rem 0;
+  }
+
+  ul {
+    margin: 0;
+  }
+ 
+
+  h3 {
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    margin: 0.25rem;
+  }
+   
+  @media only screen and (min-width: 560px) {
+    h3 {
+      font-size:1.8rem;
+    }
+    li {
+      font-size: 1.6rem;
+    }
+`;
 
 export async function getServerSideProps({ req }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -45,7 +184,6 @@ export async function getServerSideProps({ req }) {
   }
 
   const todaysRecords = await collectTodaysRecords(user_id, cleanDate);
-
 
   const existingRecordForToday = todaysRecords.length > 0 ? true : false;
   //function returns medicine details for todays scheduled medicines
@@ -97,15 +235,31 @@ export async function getServerSideProps({ req }) {
 }
 
 export default function Home({ username, streak, showDaily }) {
+  console.log("streak", streak);
   return (
     <div>
       <Layout home>
-        <h1>Home</h1>
-        <DisplayName name={`"${username}"`}></DisplayName>
-        <CurrentStreak currentStreak={streak}></CurrentStreak>
-        <AlertBox></AlertBox>
-        <MedicationChecklist showDaily={showDaily}></MedicationChecklist>
-        <RewardBox></RewardBox>
+        <StyledDiv>
+          <DisplayName name={`${username}`}></DisplayName>
+        </StyledDiv>
+        <StyledStreak>
+          <CurrentStreak streak={streak}></CurrentStreak>
+        </StyledStreak>
+        <StyledAlert>
+          {showDaily.some((element) => {
+            return element.taken === false;
+          }) ? (
+            <AlertBox></AlertBox>
+          ) : (
+            "All up to date 👍"
+          )}
+        </StyledAlert>
+        <StyledMeds>
+          <MedicationChecklist showDaily={showDaily}></MedicationChecklist>
+        </StyledMeds>
+        <StyledRewards>
+          <RewardBox></RewardBox>
+        </StyledRewards>
       </Layout>
     </div>
   );

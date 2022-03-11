@@ -6,10 +6,8 @@ export default function AlertBox() {
   return (
     <Link href="/medication-action" passHref>
       <a>
-        <div className="box">
-          <h2>Medication Alert</h2>
-          <p>Ramipril - response required ⚠️</p>
-        </div>
+        <h2>Medication Alert</h2>
+        <p>Response required ⚠️</p>
       </a>
     </Link>
   );

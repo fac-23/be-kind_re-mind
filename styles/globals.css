@@ -80,6 +80,18 @@ a {
   transform: scale(1.1);
 }
 
+.iconTrophy {
+  height: 2.6rem;
+  width: 2.6rem;
+  color: white;
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.iconTrophy:hover {
+  transform: scale(1.1);
+}
+
 /* General spacing classes */
 
 .flexbox-center-col {
@@ -99,5 +111,16 @@ a {
   body {
     width: 80%;
     margin: 0 auto;
+  }
+
+  .iconTrophy {
+    height: 4rem;
+    width: 4rem;
+    margin: 0.25rem;
+  }
+
+  .icons {
+    height: 2.2rem;
+    width: 2.2rem;
   }
 }

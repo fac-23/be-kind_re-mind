@@ -3,7 +3,7 @@ import CurrentStreak from "../components/currentStreak";
 import Layout from "../components/layout";
 import { HeatMapGrid } from "react-grid-heatmap";
 import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
-import { getSessionInfo, getFullRecord } from "../database/model";
+import { getSessionInfo, getFullRecord, getStreak } from "../database/model";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
@@ -39,11 +39,32 @@ const StyledH2 = styled.h2`
 `;
 
 export async function getServerSideProps({ req, res }) {
+  //streak
+  const allFails = await getStreak(1);
+
+  const notTodayFails = allFails.filter((dateKVP) => {
+    const cleanDate = JSON.stringify(dateKVP.date).slice(1, 11);
+    const today = new Date();
+    return cleanDate !== JSON.stringify(today).slice(1, 11);
+  });
+
+  const lastFail = JSON.stringify(notTodayFails[0].date).slice(1, 11);
+
+  const date1 = new Date(lastFail);
+  const date2 = new Date();
+
+  // To calculate the time difference of two dates
+  const Difference_In_Time = date2.getTime() - date1.getTime();
+  // To calculate the no. of days between two dates
+  const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+  const streak = Math.floor(Difference_In_Days);
+
   const userData = await getSessionInfo(req.cookies.sid);
   const user_id = JSON.parse(userData.data).user_id;
 
   //queries db and returns all record data for user
-  const fullRecordData = await getFullRecord(1);
+  const fullRecordData = await getFullRecord(user_id);
 
   //map over the array of records and replace SQL with JS date then add day of week key with value for relevant day
   const fullRecord = fullRecordData.map((record) => {
@@ -117,16 +138,16 @@ export async function getServerSideProps({ req, res }) {
   //console.log(101, dayScore);
 
   return {
-    props: { dayScore },
+    props: { dayScore, streak },
   };
 }
 
-export default function Record({ dayScore }) {
+export default function Record({ dayScore, streak }) {
   return (
     <Layout>
       <StyledDiv className="box">
         <StyledH2>Current Streak</StyledH2>
-        <CurrentStreak currentStreak={7}></CurrentStreak>
+        <CurrentStreak streak={streak}></CurrentStreak>
         <StyledList>
           {dayScore &&
             dayScore.map((day) => (
