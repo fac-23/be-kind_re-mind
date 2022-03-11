@@ -24,6 +24,20 @@ const StyledHeader = styled.div`
 const StyledTitle = styled.h3`
   font-family: var(--heading-font);
 `;
+const StyledDiv = styled.div`
+  border: 3px solid var(--color-one);
+  text-align: center;
+`;
+
+const StyledH2 = styled.h2`
+  color: var(--color-two);
+  font-family: var(--heading-font);
+  margin: 0;
+  text-align: center;
+  font-size: 1.7rem;
+  border-bottom: 1px solid var(--color-one);
+  display: inline-block;
+`;
 
 export async function getServerSideProps({ req, res }) {
   const userData = await getSessionInfo(req.cookies.sid);
@@ -111,9 +125,8 @@ export async function getServerSideProps({ req, res }) {
 export default function Record({ dayScore }) {
   return (
     <Layout>
-      <div>
-        <h1>Calendar</h1>
-        <h2>Current Streak</h2>
+      <StyledDiv className="box">
+        <StyledH2>Current Streak</StyledH2>
         <CurrentStreak currentStreak={7}></CurrentStreak>
         <StyledList>
           {dayScore &&
@@ -123,7 +136,7 @@ export default function Record({ dayScore }) {
               </div>
             ))}
         </StyledList>
-      </div>
+      </StyledDiv>
     </Layout>
   );
 }
