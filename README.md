@@ -35,10 +35,10 @@ An app to remind and track your medication schedule to ensure you take your medi
 * Co-authored-by: Juliette <53294140+julietteorpen@users.noreply.github.com>
 
 ## Roles 
-* Scrum facilitator - Adam
-* Quality Assurance - Oli
-* DevOps - Juliette 
-* UX/UI - Miah
+* Scrum facilitator - Adam.
+* Quality Assurance - Oli.
+* DevOps - Juliette.
+* UX/UI - Miah.
 
 
 
