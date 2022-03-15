@@ -97,10 +97,16 @@ UX/UI - Miah - styling, design, accessibility.
 * We started with front end to begin with and later integrated db input from the user.
 
 ## Implementation/Build 
-How did you ensure your code was good?
-Create logical and maintainable code to deliver project outcomes, explaining their choice of approach. (S1)
+### How did you ensure your code was good?
+* Used cypress testing to find errors in authenication.
+* Code reading.
+* QA monitoring appropriate naming/removal of console.logs.
+* Used some middleware functions to prevent duplication.
+### Create logical and maintainable code to deliver project outcomes, explaining their choice of approach.
+* Used next JS and wanted to use react and also wanted to encorporate a db, also this allowed us to use vercel as this allows to view pre-deployment to catch error before pushing to main.
 
 What interesting technical problems did you have to solve?
+
 Outline and apply the rationale and use of algorithms, logic and data structures. (K9, S16)
 
 How did you debug issues that arose?
