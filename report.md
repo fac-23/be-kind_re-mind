@@ -120,10 +120,12 @@ Did writing automated tests catch any bugs?
 Analyse unit testing results and review the outcomes, correcting errors. (S4)
 
 ## Deploy 
-Where/how did you deploy your application?
-Review and justify their contribution to building, managing and deploying code into the relevant environment in accordance with the project specification (S10)
+* Vercel - given as using next.js.
+* Able to review pre-deployments before pushing to main. 
+#### What problems did you encounter during deployment?
+* Multiple vercel accounts linking to the same repo and this caused confusion in the deployment environments. 
+* Also we had issues were our environment varibale were deleted from vercel, we learnt that if any issues best to check you have all the up to date ones first.
 
-What problems did you encounter during deployment?
 Maintain 
 Is it easy for someone make changes to the codebase?
 Could a new person quickly be onboarded to contribute?
