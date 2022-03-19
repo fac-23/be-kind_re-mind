@@ -105,15 +105,16 @@ UX/UI - Miah - styling, design, accessibility.
 ### Create logical and maintainable code to deliver project outcomes, explaining their choice of approach.
 * Used next JS and wanted to use react and also wanted to encorporate a db, also this allowed us to use vercel as this allows to view pre-deployment to catch error before pushing to main.
 
-What interesting technical problems did you have to solve?
+## What interesting technical problems did you have to solve?
+Inconsistent errors with authentication.
 
-Outline and apply the rationale and use of algorithms, logic and data structures. (K9, S16)
+## How did you debug issues that arose?
+Build tests to check login/sign up pathway. This highlighted that there is not an issue with the code, we then looked into the database we used. We looked on reviews of the current database and we reached out to previous FAC cohorts to ask their experience with it. They recommended switching from elephant SQL to supabase as it allows more streamlined connections unlike elephant SQL which would crash the site on vercel if their were too many connections.
+## Apply structured techniques to problem solving to identify and resolve issues and debug basic flaws in code (S7)
 
-How did you debug issues that arose?
-Apply structured techniques to problem solving to identify and resolve issues and debug basic flaws in code (S7)
-
-## Test 
+### Test 
 How did you verify your project worked correctly?
+Robust cypress testing 
 Identify and create test scenarios which satisfy the project specification (S6)
 
 Did writing automated tests catch any bugs?
