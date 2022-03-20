@@ -110,15 +110,12 @@ Inconsistent errors with authentication.
 
 ## How did you debug issues that arose?
 Build tests to check login/sign up pathway. This highlighted that there is not an issue with the code, we then looked into the database we used. We looked on reviews of the current database and we reached out to previous FAC cohorts to ask their experience with it. They recommended switching from elephant SQL to supabase as it allows more streamlined connections unlike elephant SQL which would crash the site on vercel if their were too many connections.
-## Apply structured techniques to problem solving to identify and resolve issues and debug basic flaws in code (S7)
 
-### Test 
-How did you verify your project worked correctly?
-Robust cypress testing 
-Identify and create test scenarios which satisfy the project specification (S6)
-
-Did writing automated tests catch any bugs?
-Analyse unit testing results and review the outcomes, correcting errors. (S4)
+## Test 
+### what testing did you use?
+* We used robust cypress testing.
+### Did writing automated tests catch any bugs?
+* Yes, problems with authentication already raised.
 
 ## Deploy 
 * Vercel - given as using next.js.
